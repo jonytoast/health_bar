@@ -11,7 +11,7 @@ if (process.env.JAWSDB_URL) {
 
 } else {
 
-    // using local environment variables 
+// using local environment variables 
     sequelize = new Sequelize(
         process.env.DB_NAME,
         process.env.DB_USER,
