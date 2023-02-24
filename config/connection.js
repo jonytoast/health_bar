@@ -13,9 +13,9 @@ if (process.env.JAWSDB_URL) {
 
 // using local environment variables 
     sequelize = new Sequelize(
-        "health_bar_db",
-        "root",
-        "FeddericoWayne",
+        process.env.DB_NAME,
+        process.env.DB_USER,
+        process.env.DB_PASSWORD,
         {
         host: 'localhost',
         dialect: 'mysql',
