@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/jonytoast/Group-one-project-2/issues"
   },
-  "homepage": "https://github.com/jonytoast/Group-one-project-2#readme"
+  "homepage": "https://github.com/jonytoast/Group-one-project-2#readme",
+  "devDependencies": {
+    "sequelize-cli": "^6.6.0"
+  }
 }

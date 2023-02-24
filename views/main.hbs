@@ -1,1 +1,21 @@
 {{> login}}
+
+<!-- Loop over each object in the recipes array -->
+{{#each recipes as |recipe| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      {{{get_emoji}}}
+      <a href="/project/{{recipe.id}}">{{recipe.title}}</a>
+    </h2>
+    
+    <p>Posted by {{recipe.user.username}} on {{format_date recipe.createdAt}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{recipe.recipe_text}}
+    </p>
+  </div>
+</div>
+{{/each}}
