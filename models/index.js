@@ -26,6 +26,17 @@ Comment.belongsTo(User,{
     foreignKey: "commenter_id"
 });
 
+// a comment belongs to a recipe
+Comment.belongsTo(Recipe,{
+    foreignKey: "recipe_id"
+});
+
+// a recipe has multiple comments
+Recipe.hasMany(Comment,{
+    foreignKey: "recipe_id",
+    onDelete: "CASCADE"
+});
+
 // exports associated Models
 module.exports = { User, Recipe, Comment };
 
