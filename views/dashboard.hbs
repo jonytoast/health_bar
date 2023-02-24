@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}}!</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Post a New Recipe:</h3>
+
+    <form class="form new-recipe">
+      <div class="form-group">
+        <label for="recipe-name">Recipe Title:</label>
+        <input class="form-input" type="text" id="recipe-name"/>
+      </div>
+      <div class="form-group">
+        <label for="recipe-text">Describe the Recipe:</label>
+        <textarea class="form-input" id="recipe-text"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="main-ingridient">Main Ingridient in Recipe:</label>
+        <textarea class="form-input" id="main-ingridient"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Post</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if recipes.length}}
+  <div class="col-md-6 project-list">
+    <h3>Your Recipe Posts:</h3>
+
+    {{#each recipes as |recipe|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/project/{{recipe.id}}">{{recipe.title}}</a></h4>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-sm btn-danger" id="deletepostbutton" data-id="{{project.id}}">DELETE</button>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-sm btn-danger" id="updatepostbutton" data-id="{{project.id}}">UPDATE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/profile.js"></script>

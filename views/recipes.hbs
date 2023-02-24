@@ -1,0 +1,17 @@
+{{#each recipes as |recipe| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      {{{get_emoji}}}
+      <a href="/recipe/{{recipe.id}}">{{recipe.title}}</a>
+    </h2>
+    
+    <p>Posted by {{recipe.recipe_owner}} on {{format_date recipe.createdAt}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{recipe.recipe_text}}
+    </p>
+  </div>
+</div>
+{{/each}}
