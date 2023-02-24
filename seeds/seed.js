@@ -1,29 +1,23 @@
 const sequelize = require('../config/connection');
-const { Recipe, User, Comment } = require('../models');
-const recipeData = require('./recipeSeedData.json');
-const commentSeedData = require('./commentSeedData.json');
+
+const seedUser = require('./userSeedData');
+const seedRecipe = require('./recipeSeedData.js');
+const seedComment = require('./commentSeedData.js');
 
 
 const seedDatabase = async () => {
+
   await sequelize.sync({ force: true });
 
-const recipes = await Recipe.bulkCreate(recipeData, {
-    individualHooks: true,
-    returning: true,
-  });
+  await seedUser();
+  console.log("\n------ User Data Seeded -----\n");
 
-  for (const { id } of recipes) {
-    const newCard = await User.create({
-      user_id: id,
-    });
-  }
+  await seedRecipe();
+  console.log("\n----- Recipe Data Seeded -----\n");
 
-  for (const Comment of commentSeedData) {
-    const newComment = await Comment.create({
-      ...comment,
-      user_id: comment[Math.floor(Math.random() * readers.length)].id,
-    });
-  }
+  await seedComment();
+  console.log("\n----- Comment Data Seeded -----\n");
+
  
   process.exit(0);
 };
