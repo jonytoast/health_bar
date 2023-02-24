@@ -1,6 +1,7 @@
 // imports User Model for seeding
 const { User } = require('../models');
 
+// array of user seed data
 const userSeedData = [
 
     {
