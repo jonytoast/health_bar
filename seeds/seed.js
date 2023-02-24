@@ -8,6 +8,7 @@ const seedComment = require('./commentSeedData.js');
 const seedDatabase = async () => {
 
   await sequelize.sync({ force: true });
+  console.log("\n------ Databased synced -----\n");
 
   await seedUser();
   console.log("\n------ User Data Seeded -----\n");
