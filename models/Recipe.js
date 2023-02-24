@@ -13,6 +13,13 @@ Recipe.init(
             allowNull: false,
             autoIncrement: true,
         },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isAlphanumeric: true
+            }
+        },
         recipe_text: {
             type: DataTypes.TEXT,
             allowNull: false,
