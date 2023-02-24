@@ -1,8 +1,8 @@
 // imports sequelize and seeding functions
 const sequelize = require('../config/connection');
 const seedUser = require('./userSeedData');
-const seedRecipe = require('./recipeSeedData.js');
-const seedComment = require('./commentSeedData.js');
+const seedRecipe = require('./recipeSeedData');
+const seedComment = require('./commentSeedData');
 
 // async functions to seed database
 const seedDatabase = async () => {
@@ -19,8 +19,8 @@ const seedDatabase = async () => {
   await seedComment();
   console.log("\n----- Comment Data Seeded -----\n");
 
-  process.exit(0);
 };
 
 // calls the function
 seedDatabase();
+ 
