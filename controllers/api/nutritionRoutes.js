@@ -1,21 +1,9 @@
 const router = require('express').Router();
+const FDCApi = require('../../services/fdcApi');
 
+FDCApi.queryFoods("egg");
 
-router.get('/:ingredient', async (req,res)=>{
-
-    try {
-        
-
-
-
-
-
-    } catch(err) {
-
-
-    }
-})
-
+FDCApi.fetchFood(748236);
 
 
 
