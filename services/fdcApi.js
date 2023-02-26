@@ -11,7 +11,7 @@ function queryFoods(query) {
    
     try {
 
-        return fetch(`${API_SERVER}${SEARCH_ENDPOINT}?api_key=${API_KEY}&query=${encodeURIComponent(query)}`)
+        fetch(`${API_SERVER}${SEARCH_ENDPOINT}?api_key=${API_KEY}&query=${encodeURIComponent(query)}`)
         .then(res => res.json())
         .then(data=> {
 
@@ -55,8 +55,17 @@ function queryFoods(query) {
                 .then(data => {
                     nutrientsArray = data.foodNutrients;
                     // TODO: make use of data instead of console.log()
-                    console.log(servingSize,servingUnit,nutrientsArray);
+                    const result = {
+                        ingredientName: query,
+                        servingSize: servingSize,
+                        unitOfMeasure: servingUnit,
+                        nutrients:nutrientsArray
+                    };
+                    // TODO: figure out how to output (return) result data
+                    console.log(result);
                 });
+
+
             }   
         });
 
