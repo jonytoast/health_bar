@@ -1,9 +1,31 @@
 const router = require('express').Router();
 const FDCApi = require('../../services/fdcApi');
 
-FDCApi.queryFoods("egg");
+router.get('/:name',async (req,res) =>{
+    try {
 
-FDCApi.fetchFood(748236);
+        const ingredient = req.params.name;
+
+        const result = await FDCApi.queryFoods(ingredient)
+
+        // TODO: figure out why result is undefined
+
+
+
+
+    } catch(err) {
+        res.status(404).json(err);
+
+
+
+
+    }
+
+})
+
+FDCApi.queryFoods();
+
+
 
 
 
