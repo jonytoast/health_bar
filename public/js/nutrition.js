@@ -1,5 +1,5 @@
 // selects the text input of user's food query
-const query = document.getElementById('foodQuery');
+const query = document.getElementById('food-query');
 
 // async function that handles user food nutrition queries and display related recipes if user is logged in
 async function handleFoodQuery() {
