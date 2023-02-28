@@ -6,13 +6,13 @@ const Comment = require('./Comment');
 // Model associations
 // a user has multiple recipes
 User.hasMany(Recipe,{
-    foreignKey: "recipe_id",
+    foreignKey: "user_id",
     onDelete: "CASCADE"
 });
 
 // a recipe belongs to a user
 Recipe.belongsTo(User,{
-    foreignKey: "recipe_id",
+    foreignKey: "user_id",
 });
 
 // a user has multiple comments
@@ -28,8 +28,14 @@ Comment.belongsTo(User,{
 
 // a comment belongs to a recipe
 Comment.belongsTo(Recipe,{
-    foreignKey: "recipe_id"
+    foreignKey: "recipe_id",
+    onDelete: 'CASCADE'
 });
+
+Recipe.hasMany(Comment, {
+    foreignKey: 'project_id',
+    onDelete: 'CASCADE'
+})
 
 // exports associated Models
 module.exports = { User, Recipe, Comment };

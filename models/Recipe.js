@@ -28,7 +28,7 @@ Recipe.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        recipe_owner: {
+        user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: "user",
