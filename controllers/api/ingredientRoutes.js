@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const FDCApi = require('../../services/fdcApi');
 
 // Search for a list of ingredients
 router.get('/search', async (req, res) => {
