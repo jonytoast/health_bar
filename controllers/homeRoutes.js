@@ -10,11 +10,26 @@ router.get('/', async (req, res) => {
         {
           model: User,
         },
-        // {
-        //   model: Comment,
-        // }
+        {
+          model: Comment,
+        }
       ],
     });
+
+    // if they are logged in, return user information (and if not ignore this entirely basically)
+    var userInformation = async (req, res) => {
+      if (req.session.logged_in) {
+        const userData = await User.findByPk(req.session.user_id, {
+          attributes: { exclude: ['password'] },
+        });
+    
+        const user = userData.get({ plain: true });
+  
+        return user;
+      } else {
+        return;
+      };
+    }
 
     // Serialize data so the template can read it
     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
@@ -22,6 +37,8 @@ router.get('/', async (req, res) => {
     // Pass serialized data and session flag into template
     res.render('homepage', {
       recipes,
+      userInformation,
+      user_id: req.session.user_id,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -40,9 +57,9 @@ router.get('/recipes', async (req, res) => {
           model: User,
           attributes: ['username']
         },
-        // {
-        //   model: Comment,
-        // }
+        {
+          model: Comment,
+        }
       ],
     });
 
@@ -102,13 +119,13 @@ router.get('/recipe/:id', async (req, res) => {
         {
           model: User
         },
-        // {
-        //   model: Comment,
-        //   include: {
-        //     model: User,
-        //     attributes: ['id', 'username']
-        //   }
-        // }
+        {
+          model: Comment,
+          include: {
+            model: User,
+            attributes: ['id', 'username']
+          }
+        }
       ],
     });
 
