@@ -7,9 +7,9 @@ router.get('/', async (req, res) => {
     // Get all recipes and JOIN with user data
     const recipeData = await Recipe.findAll({
       include: [
-        // {
-        //   model: User,
-        // },
+        {
+          model: User,
+        },
         // {
         //   model: Comment,
         // }
@@ -40,9 +40,9 @@ router.get('/recipes', async (req, res) => {
           model: User,
           attributes: ['username']
         },
-        {
-          model: Comment,
-        }
+        // {
+        //   model: Comment,
+        // }
       ],
     });
 
@@ -100,23 +100,22 @@ router.get('/recipe/:id', async (req, res) => {
     const recipeData = await Recipe.findByPk(req.params.id, {
       include: [
         {
-          model: User,
-          attributes: ['username'],
+          model: User
         },
-        {
-          model: Comment,
-          include: {
-            model: User,
-            attributes: ['id', 'username']
-          }
-        }
+        // {
+        //   model: Comment,
+        //   include: {
+        //     model: User,
+        //     attributes: ['id', 'username']
+        //   }
+        // }
       ],
     });
 
     const recipe = recipeData.get({ plain: true });
 
-    res.render('project', {
-      ...project,
+    res.render('single-recipe', {
+      ...recipe,
       user_id: req.session.user_id,
       logged_in: req.session.logged_in
     });

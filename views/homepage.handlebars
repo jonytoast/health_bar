@@ -9,7 +9,7 @@
       <a href="/recipe/{{recipe.id}}">{{recipe.title}}</a>
     </h2>
     
-    <p>Posted by {{recipe.user_id}} on {{format_date recipe.createdAt}}</p>
+    <p>Posted by {{recipe.user.username}} on {{format_date recipe.createdAt}}</p>
   </div>
   <div class="col-md-7">
     <p>
