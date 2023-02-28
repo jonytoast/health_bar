@@ -6,27 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recipe Health Guru</title>
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&family=Phudu:wght@400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
-  <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="money">📕</span>
-        <a href="/">Recipe Health Guru</a>
-      </h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
-        <a href="/dashboard">Dashboard</a> |
-        <a href="/recipes">Recipes</a> |
-        {{#if logged_in}}
-        <button class="no-button" id="logout">Logout</button>
-        {{else}}
-        <a href="/login">Login</a>
-        {{/if}}
-      </nav>
-    </header>
+  <header id="header" class="display-flex justify-space-between align-center p-2">
+    <h1>
+      <span role="img" aria-label="money">📕</span>
+      <a href="/">Recipe Health Guru</a>
+    </h1>
+    <nav>
+      <!-- Conditionally render login or logout links -->
+      <a href="/dashboard">Dashboard</a> |
+      <a href="/recipes">Recipes</a> |
+      {{#if logged_in}}
+      <button class="no-button" id="logout">Logout</button>
+      {{else}}
+      <a href="/login">Login</a>
+      {{/if}}
+    </nav>
+  </header>
 
   <main>
   {{{ body }}}

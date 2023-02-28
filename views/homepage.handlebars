@@ -1,7 +1,7 @@
 {{#if logged_in}}
-  <h4>Welcome back, {{user.username}}.</h4>
+  <h4 class="greeting">Welcome back, {{user.username}}.</h4>
 {{else}}
-  <h4>Below are some examples of recent recipes. To see the full functionality of the Recipe Health Guru, we invite you to either <a href="/login">login</a> or <a href="/login">make an account</a>.</h4>
+  <h4 class="greeting">Below are some examples of recent recipes. To see the full functionality of the Recipe Health Guru, we invite you to either <a href="/login">login</a> or <a href="/login">make an account</a>.</h4>
 {{/if}}
 
 <br>
@@ -11,7 +11,7 @@
 {{!-- WE NEED TO ONLY SHOW THE 3 MOST RECENT RECIPES --}}
 <!-- Loop over each object in the recipes array -->
 {{#each recipes as |recipe| }}
-<div class="row mb-4 project">
+<div class="recipe-wrapper">
   <div class="col-md-5">
     <h2>
       <!-- Call helper function with triple brackets to render the emoji span as HTML -->
