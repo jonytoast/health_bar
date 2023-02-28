@@ -7,7 +7,7 @@ const Comment = require('./Comment');
 // a user has multiple recipes
 User.hasMany(Recipe,{
     foreignKey: "user_id",
-    onDelete: "CASCADE"
+    // onDelete: "CASCADE"
 });
 
 // a recipe belongs to a user
@@ -18,7 +18,7 @@ Recipe.belongsTo(User,{
 // a user has multiple comments
 User.hasMany(Comment,{
     foreignKey: "commenter_id",
-    onDelete: "CASCADE"
+    // onDelete: "CASCADE"
 });
 
 // a comment belongs to a user
@@ -29,11 +29,11 @@ Comment.belongsTo(User,{
 // a comment belongs to a recipe
 Comment.belongsTo(Recipe,{
     foreignKey: "recipe_id",
-    onDelete: 'CASCADE'
+    // onDelete: 'CASCADE'
 });
 
 // Recipe.hasMany(Comment, {
-//     foreignKey: 'id',
+//     foreignKey: 'recipe_id',
 //     onDelete: 'CASCADE'
 // })
 
