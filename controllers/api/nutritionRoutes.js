@@ -2,10 +2,13 @@
 const router = require('express').Router();
 const fetch = require('node-fetch');
 require('dotenv').config();
-const API_KEY = process.env.FDC_API_KEY || "uPUi5hMKwzSOBHqauPYyykPsQUrhoBmt2vy8lNlm";
+const API_KEY = process.env.FDC_API_KEY;
 const API_SERVER = 'https://api.nal.usda.gov/fdc';
 const SEARCH_ENDPOINT = '/v1/foods/search';
-const FETCH_ENDPOINT = '/v1/food/';
+const isVegan = require('is-vegan');
+const { Recipe } = require('../../models');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 // node-fetch GET request to retriece queried food's nutritional data
 router.get('/:name',async (req,res) =>{
@@ -14,68 +17,82 @@ router.get('/:name',async (req,res) =>{
 
         const query = req.params.name;
 
+        const recipes = await Recipe.findAll({
+            where: {
+                recipe_text: {
+                    [Op.like]: '%' + query + '%'
+                }
+            }
+        });
+
+        const recipeData = recipes.map((recipe)=>
+        recipe.get({plain:true}));
+
+
         // node-fetch to retrieve the fdcid of queried food
-        fetch(`${API_SERVER}${SEARCH_ENDPOINT}?api_key=${API_KEY}&query=${encodeURIComponent(query)}`)
+        fetch(`${API_SERVER}${SEARCH_ENDPOINT}?api_key=${API_KEY}&query=${encodeURIComponent(query)}&pageSize=20`)
         .then(res => res.json())
         .then(data=> {
 
-            // stores list of matching foods in an array
-            const dataArray = [data];
-            const foodArray = dataArray[0].foods;
 
-            // if API returns no match
-            if (foodArray.length === 0) {
+            if (data.foods.length ===0) {
 
-                console.log("Result Not Found. Please Try Again!");
+                const noResult = true;
+                res.status(404).render('nutrition',{ noResult, query, recipeData });
+                return;
+
+            } else if (!data.foods[0].servingSize || !data.foods[0].servingSizeUnit) {
                 
+                const noResult = true;
+                res.status(404).render('nutrition',{ noResult, query, recipeData });
+                return;
+
             } else {
 
-                // declares variables to store returned API data
-                let foodId;
-                let servingSize;
-                let servingUnit;
-                let nutrientsArray;
+                const vegan = isVegan.isVeganIngredient(req.params.name.toLowerCase());
 
-                // loops through returned API data for matching food
-                for (food of foodArray) {
-                    // if serving size and unit of measure is not listed
-                    if (!food.servingSize || !food.servingSizeUnit) {
-                        console.log("Serving Size Not Defined. Please Try Again");
-                        return;
-                    };
+                let veganWarning;
 
-                    // selects the first exact match and retrieces fdcId
-                    if (food.description.toUpperCase() === query.toUpperCase() && food.servingSize && food.servingSizeUnit) {
-                        foodId = food.fdcId;
-                        servingSize = food.servingSize;
-                        servingUnit = food.servingSizeUnit;
-                        break;
+                if (vegan) {
+                    veganWarning = "This ingredient is vegan!"
+                } else {
+                    veganWarning = "This ingredient is NOT vegan!"
+                };
+
+                const servingSize = Math.round(data.foods[0].servingSize);
+                const unit = data.foods[0].servingSizeUnit;
+    
+                if (servingSize.length === 0 || unit.length ===0 ) {
+                    console.log("Data Not Found. Please Try Again!");
+                    return;
+                };
+    
+                const nutrients = data.foods[0].foodNutrients;
+                const filteredNutrients = nutrients.filter((nutrient)=>{
+                    if (nutrient.value !== 0) {
+                        return true;
+                    } else {
+                        return false
                     }
-                }
-
-                // GET request to retrieve food nutrients by fdcId
-                fetch(`${API_SERVER}${FETCH_ENDPOINT}${foodId}?api_key=${API_KEY}`)
-                .then(res => res.json())
-                .then(data => {
-                    nutrientsArray = data.foodNutrients;
-                    // TODO: make use of data instead of console.log()
-                    const result = {
-                        ingredientName: query,
-                        servingSize: servingSize,
-                        unitOfMeasure: servingUnit,
-                        nutrients:nutrientsArray
-                    };
-                    
-                    res.status(200).render('nutrition',{ result });
-
-                    
                 });
 
+                const result = {
+                    foodName: req.params.name.toUpperCase(),
+                    servingSize: servingSize,
+                    unit: unit,
+                    nutrients: filteredNutrients,
+                    isVegan: veganWarning
+                };
 
-            }   
+       
+
+                res.status(200).render('nutrition',{ result, query, recipeData })
+
+      
+            }
+
+
         });
-
-
 
 
     } catch(err) {

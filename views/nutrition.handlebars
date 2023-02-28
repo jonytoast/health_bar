@@ -1,7 +1,51 @@
-<p>{{result.ingredientName}}</p>
-<p>Serving Size: {{result.servingSize}} {{result.unitOfMeasure}}</p>
-<p>Nutritional Facts:</p>
-{{#each result.nutrients as |nutrient|}}
-<p>{{nutrient.nutrient.name}}: {{nutrient.nutrient.number}} {{nutrient.nutrient.unitName}}</p>
+{{#if noResult}}
 
-{{/each}}
+  <h3>Data Not Found. Please Try Again!</h3>
+  <a class="return" href="/dashboard">Go Back</a>
+
+{{else}}
+
+  <a class="return" href="/dashboard">New Search</a>
+  <h3>{{result.foodName}}</h3>
+
+  <h5>{{result.isVegan}}</h5>
+  <p>Serving Size: {{result.servingSize}} {{result.unit}}</p>
+  <h4>Nutritional Facts:</h4>
+
+  {{#each result.nutrients as |nutrient|}}
+
+      <p>{{nutrient.nutrientName}}: {{nutrient.value}} {{nutrient.unitName}}</p>
+
+  {{/each}}
+
+{{/if}}
+
+{{#unless noResult}}
+
+  <h3>Here are the recipes that include {{ query }}:</h3>
+
+  {{#each recipeData as |recipe| }}
+  <div class="row mb-4 project">
+    <div class="col-md-5">
+      <h2>
+        <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+        {{{get_emoji}}}
+        <a href="/recipe/{{recipe.id}}">{{recipe.title}}</a>
+      </h2>
+    </div>
+    <div class="col-md-7">
+      <p>
+        {{recipe.recipe_text}}
+      </p>
+    </div>
+  </div>
+  {{/each}}
+
+{{/unless}}
+
+
+
+
+
+
+
