@@ -19,7 +19,9 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
+    "is-vegan": "^1.2.0",
     "mysql2": "^2.2.5",
+    "node-fetch": "^2.6.9",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
