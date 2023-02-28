@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // sets up Recipe Model
-class Recipe extends Model{};
+class Recipe extends Model { };
 
 // initiates Recipe Model
 Recipe.init(
