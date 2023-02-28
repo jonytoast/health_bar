@@ -1,0 +1,12 @@
+<div class="text-center">
+  <h2>{{title}}</h2>
+  <p>{{{get_emoji}}}</p>
+  <p>{{recipe_text}}</p>
+  <p>Posted by {{user.username}} on {{format_date createdAt}}</p>
+  
+</div>
+
+</div>
+{{#if logged_in}}
+<script src="/js/comment.js"></script>
+{{/if}}
