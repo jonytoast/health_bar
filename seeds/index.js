@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // imports sequelize and seeding functions
 const sequelize = require('../config/connection');
 const seedUser = require('./userSeedData');
