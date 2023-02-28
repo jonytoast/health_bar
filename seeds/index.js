@@ -23,4 +23,3 @@ const seedDatabase = async () => {
 
 // calls the function
 seedDatabase();
- 
