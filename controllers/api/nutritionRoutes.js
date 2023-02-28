@@ -1,32 +1,19 @@
 const router = require('express').Router();
 const FDCApi = require('../../services/fdcApi');
 
-router.get('/:name',async (req,res) =>{
+router.get('/search/:ingredient', async (req,res) =>{
     try {
-
-        const ingredient = req.params.name;
-
-        const result = await FDCApi.queryFoods(ingredient)
-
-        // TODO: figure out why result is undefined
-
-
-
-
+        const { ingredient } = req.params;
+        const result = await FDCApi.queryFoods(ingredient);
+        console.log(result);
+        if (!result.length) {
+            res.status(404).json([]);
+        } else {
+            res.json(result);
+        }
     } catch(err) {
-        res.status(404).json(err);
-
-
-
-
+        res.status(500).json({ err: err.message });
     }
-
-})
-
-FDCApi.queryFoods();
-
-
-
-
+});
 
 module.exports = router;
