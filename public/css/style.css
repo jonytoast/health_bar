@@ -1,0 +1,131 @@
+:root {
+    --custard: #FFFFC2;
+    --berries: #F5A9CB;
+    --grapes: #977FD7;
+    --seasalt: #9CCFE7;
+    --salmon: #FC9D9A;
+    --apricot: #F9CDAD;
+    --dough: #fffcd8;
+    --periwinkle: #BED4F0;
+    --silverware: #E9E8E7;
+    --peach: #FE7297;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--dough);
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    color: var(--grapes);
+}
+
+/* main styling */
+#header {
+    color:white;
+    font-family: 'Phudu', cursive;
+    font-size: 1.2rem;
+    text-align: center;
+    padding-block: 20px;
+    background-color: var(--periwinkle);
+    border: 10px solid var(--berries);
+    border-radius: 35px;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+
+body {
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+#header:hover {
+    background-color: var(--custard);
+    border: 15px solid var(--seasalt);
+}
+
+#header:hover a {
+    color: var(--peach);
+}
+
+#header a {
+    color:white;
+}
+
+#header a:hover {
+    color: var(--grapes);
+}
+
+/* homepage styling */
+@keyframes shimmer {
+    0% {
+        color: black;
+    }
+    50% {
+        color: var(--peach);
+    }
+    100% {
+        color: black;
+    }
+    
+}
+
+.greeting {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-inline: 25px;
+}
+
+.greeting a {
+    animation-name: shimmer;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.greeting a:hover {
+    animation: none;
+    color: grey;
+}
+
+.recipe-wrapper {
+    text-align: center;
+    margin-inline: 15px;
+    padding-inline: 25px;
+    border: 10px solid var(--salmon);
+    background-color: var(--silverware);
+    border-radius: 15px;
+    margin-block: 10px;
+}
+
+.recipe-wrapper:hover {
+    background-color: white;
+    border: 10px solid var(--peach);
+}
+
+/* login page styling */
+
+
+/* single recipe page styling */
+.single-recipe-wrapper {
+    text-align: center;
+
+}
+
+#recipe-title {
+    font-size: 3rem;
+}
+
+#recipe-text {
+    font-size: 1.2rem;
+    margin-inline: auto;
+    padding-inline: 25px;
+    padding-block: 45px;
+    background-color: white;
+    border-radius: 25px;
+    width: 85vw;
+}
