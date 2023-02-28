@@ -5,14 +5,10 @@ const sequelize = require('../config/connection');
 
 // sets up User Model with custom method to check user password with bcrypt
 class User extends Model {
-
-    checkUserPassword(userPassword) {
-
-        return bcrypt.compareSync(userPassword, this.password)
-
+    checkPassword(loginPw) {
+        return bcrypt.compareSync(loginPw, this.password);
     }
-
-};
+}
 
 // initiates User Model
 User.init(
@@ -44,6 +40,16 @@ User.init(
         },
     },
     {
+        hooks: {
+            beforeCreate: async (newUserData) => {
+                newUserData.password = await bcrypt.hash(newUserData.password, 10);
+                return newUserData;
+            },
+            beforeUpdate: async (updatedUserData) => {
+                updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+                return updatedUserData;
+            },
+        },
         sequelize,
         timestamps: true,
         underscored: true,
