@@ -10,7 +10,7 @@ const recipeSeedData = [
         user_id: 1,
     },
     {
-        title: "spaghetti",
+        title: "Spaghetti",
         recipe_text: "Boil pasts in salt water. Add meat sauce on top. Serve.",
         main_ingredient: "Beef",
         user_id: 2,
