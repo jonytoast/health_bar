@@ -4,11 +4,11 @@ const bcrypt = require('bcryptjs');
 const sequelize = require('../config/connection');
 
 // sets up User Model with custom method to check user password with bcrypt
-class User extends Model{
-    
+class User extends Model {
+
     checkUserPassword(userPassword) {
 
-        return bcrypt.compareSync(userPassword,this.password)
+        return bcrypt.compareSync(userPassword, this.password)
 
     }
 
@@ -16,7 +16,6 @@ class User extends Model{
 
 // initiates User Model
 User.init(
-
     {
         id: {
             type: DataTypes.INTEGER,
@@ -40,7 +39,7 @@ User.init(
             allowNull: false,
             validate: {
                 isAlphanumeric: true,
-                len: [6,30],
+                len: [6, 30],
             },
         },
     },
