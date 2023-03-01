@@ -1,19 +1,26 @@
 :root {
-    --custard: #FFFFC2;
-    --berries: #F5A9CB;
-    --grapes: #977FD7;
-    --seasalt: #9CCFE7;
-    --salmon: #FC9D9A;
-    --apricot: #F9CDAD;
-    --dough: #fffcd8;
-    --periwinkle: #BED4F0;
-    --silverware: #E9E8E7;
-    --peach: #FE7297;
+
+    --salmon: #E8A39B;
+    --peach: #F0C1BC;
+    --nude: #F6D4CB;
+    --paste: #F8F7FD;
+    --lilac: #DCCEE8;
+    --grapes: #968DD0;
+    --plum: #2E2E52;
+    --water: #d5ebff;
+    --pink: #F5CEEA;
+    --periwinkle: #96BEE3;
+    --violet: #5957B1;
+    --eggshell: #EEEEEE;
+    --custard: #fbfb8b;
+    --leaves: rgb(210, 255, 194);
+    --warning: rgb(255, 99, 99);
+
 }
 
 html {
     scroll-behavior: smooth;
-    background-color: var(--dough);
+    background-color: var(--water);
 }
 
 .hr {
@@ -34,30 +41,30 @@ a:hover {
 }
 
 /* main styling */
+body {
+    font-family: 'Caveat', cursive;
+}
+
 #header {
     color:white;
-    font-family: 'Phudu', cursive;
+    font-family: 'Special Elite', cursive;
     font-size: 1.2rem;
     text-align: center;
     padding-block: 20px;
     background-color: var(--periwinkle);
-    border: 10px solid var(--berries);
+    border: 10px solid var(--plum);
     border-radius: 35px;
     transition-property: all;
     transition-duration: 0.5s;
 }
 
-body {
-    font-family: 'Barlow Condensed', sans-serif;
-}
-
 #header:hover {
-    background-color: var(--custard);
-    border: 15px solid var(--seasalt);
+    background-color: var(--plum);
+    border: 15px solid var(--grapes);
 }
 
 #header:hover a {
-    color: var(--peach);
+    color: var(--nude);
 }
 
 #header a {
@@ -65,7 +72,7 @@ body {
 }
 
 #header a:hover {
-    color: var(--grapes);
+    color: var(--salmon);
 }
 
 /* homepage styling */
@@ -74,7 +81,7 @@ body {
         color: black;
     }
     50% {
-        color: var(--peach);
+        color: var(--warning);
     }
     100% {
         color: black;
@@ -103,15 +110,18 @@ body {
     text-align: center;
     margin-inline: 15px;
     padding-inline: 25px;
-    border: 10px solid var(--salmon);
-    background-color: var(--silverware);
+    border: 5px solid var(--periwinkle);
+    background-color: var(--custard);
     border-radius: 15px;
     margin-block: 10px;
+    transition-property: all;
+    transition-duration: 0.3s;
 }
 
 .recipe-wrapper:hover {
     background-color: white;
-    border: 10px solid var(--peach);
+    border: 5px solid var(--custard);
+    box-shadow: 7px 7px grey;
 }
 
 /* login page styling */
@@ -120,11 +130,12 @@ body {
 }
 
 #login-wrapper, #signup-wrapper {
+    font-family: 'Audiowide', cursive;
     line-height: 2rem;
     text-align: center;
-    background-color: var(--silverware);
+    background-color: var(--custard);
     border-radius: 25px;
-    border: 10px solid white;
+    border: 10px solid var(--pink);
     padding-inline: 15px;
     padding-block: 15px;
     margin-block: 15px;
@@ -134,18 +145,20 @@ body {
 }
 
 #login-wrapper:hover, #signup-wrapper:hover {
-    border: 10px solid var(--periwinkle);
+    border: 10px solid var(--custard);
     background-color: white;
+    box-shadow: 7px 7px grey;
 }
 
 .submit {
+    font-family: 'Audiowide', cursive;
     cursor: pointer;
     color:white;
     background-color: var(--grapes);
     margin-top: 10px;
     margin-inline: 10px;
     padding: 7px 15px;
-    border: 5px solid var(--seasalt);
+    border: 5px solid var(--lilac);
     border-radius: 15px;
     transition-property: all;
     transition-duration: 0.3s;
@@ -158,10 +171,19 @@ body {
 }
 .submit:active {
     transition:none;
-    border: 5px solid var(--silverware);
+    border: 5px solid var(--plum);
     box-shadow: none;
     color:white;
     background-color: grey;
+}
+
+/* all recipes page styling */
+#all-recipes-title {
+    font-family: 'Audiowide', cursive;
+}
+
+.listOfRecipes {
+    text-align: center;
 }
 
 /* single recipe page styling */
@@ -181,7 +203,7 @@ body {
     margin-right:auto;
     padding-inline: 25px;
     padding-block: 45px;
-    background-color: var(--silverware);
+    background-color: var(--custard);
     border-radius: 25px;
     width: 85vw;
     transition-property: all;
@@ -195,7 +217,39 @@ body {
 }
 
 #comment-post-wrapper {
+    font-family: 'Audiowide', cursive;
     text-align: center;
+}
+
+#commentText {
+    font-family: 'Audiowide', cursive;
+    display:block;
+    margin-inline:auto;
+    width: 40vw;
+    resize:vertical;
+}
+
+#comments-wrapper {
+    font-family: 'Audiowide', cursive;
+    text-align: center;
+}
+
+.previous-comment {
+    background-color: var(--leaves);
+    border: 5px solid var(--leaves);
+    border-radius: 10px;
+    padding-block: 5px;
+    margin-block: 15px;
+    margin-inline: auto;
+    width: 55vw;
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+.previous-comment:hover {
+    background-color: white;
+    border: 5px solid var(--paste);
+    box-shadow: 6px 6px grey;
 }
 
 /* dashboard styling */
@@ -214,14 +268,15 @@ body {
 }
 
 #search-bar-wrapper, #post-recipe-wrapper {
+    font-family: 'Audiowide', cursive;
     text-align: center;
-    background-color: var(--silverware);
+    background-color: var(--custard);
     padding-block: 25px;
     padding-inline: 5px;
     width: 80vw;
     margin-inline:auto;
     border-radius: 25px;
-    border: 10px solid white;
+    border: 10px solid var(--periwinkle);
     transition-property: all;
     transition-duration: 0.3s;
     margin-block: 15px;
@@ -229,13 +284,13 @@ body {
 
 #search-bar-wrapper:hover {
     background-color: white;
-    border: 10px solid var(--peach);
+    border: 10px solid var(--pink);
     box-shadow: 7px 7px grey;
 }
 
 #post-recipe-wrapper:hover {
     background-color: white;
-    border: 10px solid var(--periwinkle);
+    border: 10px solid var(--leaves);
     box-shadow: 7px 7px grey;
 }
 
@@ -252,6 +307,7 @@ body {
 
 /* food nutrition page styling */
 #no-data-wrapper {
+    font-family: 'Audiowide', cursive;
     line-height: 2rem;
     width: 45vw;
     background-color: white;
@@ -265,6 +321,7 @@ body {
 }
 
 #nutrition-wrapper {
+    font-family: 'Audiowide', cursive;
     text-align: center;
 }
 
@@ -277,7 +334,7 @@ body {
         background-color: rgb(210, 248, 138);
     }
     50% {
-        background-color: #FE7297;
+        background-color: var(--warning);
     }
     100% {
         background-color: rgb(210, 248, 138);
@@ -292,30 +349,31 @@ body {
     margin-inline:auto;
     background-color: rgb(210, 248, 138);
     border-radius: 10px;
-    border:5px solid var(--silverware);
+    border:5px solid var(--custard);
     animation-name: warning;
     animation-duration: 2s;
     animation-iteration-count: infinite;
 }
 
 #nutrition-fact-box {
-    background-color: var(--silverware);
+    background-color: var(--custard);
     width: 65vw;
     padding-block: 15px;
     margin-inline: auto;
     border-radius: 15px;
-    border: 5px solid var(--silverware);
+    border: 5px solid var(--custard);
     transition-property: all;
     transition-duration: 0.3s;
 }
 
 #nutrition-fact-box:hover {
     background-color: white;
-    border: 5px solid var(--periwinkle);
+    border: 5px solid var(--grapes);
     box-shadow: 7px 7px grey;
 }
 
 #related-recipes-title {
+    font-family: 'Audiowide', cursive;
     text-align: center;
 }
 
