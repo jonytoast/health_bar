@@ -1,7 +1,7 @@
 <div class="single-recipe-wrapper">
   <h2 id="recipe-title">{{title}}</h2>
   <p>{{{get_emoji}}}</p>
-  <p>Posted by {{user.username}} on {{format_date createdAt}}</p>
+  <p class="author">Posted by {{user.username}} on {{format_date createdAt}}</p>
   <p id="recipe-text">{{recipe_text}}</p>
 </div>
 {{#if logged_in}}

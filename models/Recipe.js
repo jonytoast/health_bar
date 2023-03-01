@@ -18,7 +18,7 @@ Recipe.init(
             allowNull: false,
         },
         recipe_text: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         },
         main_ingredient: {

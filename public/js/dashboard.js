@@ -2,9 +2,11 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
 
-    const title = document.querySelector('#recipe-name').value.trim();
+    const title = document.querySelector('#recipe-name').value.toUpperCase().trim();
     const recipe_text = document.querySelector('#recipe-text').value.trim();
     const main_ingredient = document.querySelector('#main-ingridient').value.trim();
+
+    console.log(title);
 
     if (title && recipe_text && main_ingredient) {
         const response = await fetch(`/api/recipes`, {
@@ -50,9 +52,10 @@ const delButtonHandler = async (event) => {
 const editButtonHandler = async (event) => {
     event.preventDefault();
     const id = event.target.getAttribute('data-id');
-    const updatedName = window.prompt("What do you want the title to be?");
-    const updatedBody = window.prompt("What do you want the body to be?");
+    const updatedName = window.prompt("What do you want the title to be?").toUpperCase();
     const mainIngredient = window.prompt("What do you want the main ingredient to be?");
+    const updatedBody = window.prompt("What do you want the body to be?");
+
 
 
     if (updatedBody && updatedName && mainIngredient) {

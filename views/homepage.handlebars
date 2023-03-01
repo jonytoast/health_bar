@@ -1,5 +1,5 @@
 {{#if logged_in}}
-  <h4 class="greeting">Welcome back, {{user.username}}.</h4>
+  <h4 class="greeting">Welcome back!</h4>
 {{else}}
   <h4 class="greeting">Below are some examples of recent recipes. To see the full functionality of the Recipe Health Guru, we invite you to either <a href="/login">login</a> or <a href="/login">make an account</a>.</h4>
 {{/if}}
@@ -7,7 +7,8 @@
 <br>
 <hr class="hr">
 <br>
-
+<h3 class="author homepage-title">Recently Posted Recipes:</h3>
+<br>
 {{!-- WE NEED TO ONLY SHOW THE 3 MOST RECENT RECIPES --}}
 <!-- Loop over each object in the recipes array -->
 {{#each recipes as |recipe| }}
@@ -19,7 +20,7 @@
       <a href="/recipe/{{recipe.id}}">{{recipe.title}}</a>
     </h2>
     
-    <p>Posted by {{recipe.user.username}} on {{format_date recipe.createdAt}}</p>
+    <p class="author">Posted by {{recipe.user.username}} on {{format_date recipe.createdAt}}</p>
   </div>
   <div class="col-md-7">
     <p>
