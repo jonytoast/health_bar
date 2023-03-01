@@ -4,6 +4,32 @@
   <p>Posted by {{user.username}} on {{format_date createdAt}}</p>
   <p id="recipe-text">{{recipe_text}}</p>
 </div>
+{{#if logged_in}}
+<form>
+  <textarea id="commentText" project-id="{{id}}"></textarea>
+  <button id="postButton" project-id="{{id}}">Post your comment!</button>
+</form>
+{{/if}}
+<br><br>
+<h3>Previous Post Comments:</h3>
+
+<div class="previousComments">
+  {{#each comments as |comment|}}
+  <div project-id="{{comment.project_id}}" comment-id="{{comment.id}}">
+    <h6>-------<br>Commented by {{comment.user.username}} on {{format_date comment.createdAt}}</h6>
+    <p>{{comment.comment_text}}</p>
+    {{!-- Only delete/edit comments if they are the owner of it (by nature, this means they must also be logged in to
+    delete/edit their own comments) --}}
+    {{#if (is_commenter comment.user.id ../user_id)}}
+    <button class="deleteButton" id="deleteButton" project-id="{{comment.project_id}}"
+      comment-id="{{comment.id}}">Delete Your Comment</button>
+    <button class="editButton" id="editButton" project-id="{{comment.project_id}}" comment-id="{{comment.id}}">Edit
+      Your Comment</button>
+    {{/if}}
+
+  </div>
+  {{/each}}
+</div>
 
 </div>
 {{#if logged_in}}
