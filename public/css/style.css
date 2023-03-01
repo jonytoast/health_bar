@@ -107,11 +107,14 @@ body {
     background-color: var(--silverware);
     border-radius: 15px;
     margin-block: 10px;
+    transition-property: all;
+    transition-duration: 0.3s;
 }
 
 .recipe-wrapper:hover {
     background-color: white;
     border: 10px solid var(--peach);
+    box-shadow: 7px 7px grey;
 }
 
 /* login page styling */
@@ -164,6 +167,12 @@ body {
     background-color: grey;
 }
 
+/* all recipes page styling */
+.listOfRecipes {
+    text-align: center;
+}
+
+
 /* single recipe page styling */
 .single-recipe-wrapper {
     display:flex;
@@ -196,6 +205,35 @@ body {
 
 #comment-post-wrapper {
     text-align: center;
+}
+
+#commentText {
+    display:block;
+    margin-inline:auto;
+    width: 40vw;
+    resize:vertical;
+}
+
+#comments-wrapper {
+    text-align: center;
+}
+
+.previous-comment {
+    background-color: var(--silverware);
+    border: 5px solid var(--silverware);
+    border-radius: 10px;
+    padding-block: 5px;
+    margin-block: 15px;
+    margin-inline: auto;
+    width: 55vw;
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+.previous-comment:hover {
+    background-color: white;
+    border: 5px solid var(--salmon);
+    box-shadow: 6px 6px grey;
 }
 
 /* dashboard styling */
