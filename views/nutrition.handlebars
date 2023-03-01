@@ -1,31 +1,31 @@
 {{#if noResult}}
-
-  <h3>Data Not Found. Please Try Again!</h3>
-  <a class="return" href="/dashboard">Go Back</a>
-
+  <div id="no-data-wrapper">
+    <h2>Womp Womp!</h2>
+    <h3>Data Not Found. Please Try Again!</h3>
+    <a class="submit" href="/dashboard">Go Back</a>
+  </div>
 {{else}}
+  <div id="nutrition-wrapper">
+    <h3 id="food-title">{{result.foodName}}</h3>
+    <h5 id="vegan">{{result.isVegan}}</h5>
+    <h3>Serving Size: {{result.servingSize}} {{result.unit}}</h3>
+    <div id="nutrition-fact-box">
+      <h3>Nutritional Facts:</h3>
+      {{#each result.nutrients as |nutrient|}}
 
-  <a class="return" href="/dashboard">New Search</a>
-  <h3>{{result.foodName}}</h3>
+          <p>{{nutrient.nutrientName}}: {{nutrient.value}} {{nutrient.unitName}}</p>
 
-  <h5>{{result.isVegan}}</h5>
-  <p>Serving Size: {{result.servingSize}} {{result.unit}}</p>
-  <h4>Nutritional Facts:</h4>
-
-  {{#each result.nutrients as |nutrient|}}
-
-      <p>{{nutrient.nutrientName}}: {{nutrient.value}} {{nutrient.unitName}}</p>
-
-  {{/each}}
-
+      {{/each}}
+    </div>
+  </div>
 {{/if}}
 
 {{#unless noResult}}
 
-  <h3>Here are the recipes that include {{ query }}:</h3>
+  <h3 id="related-recipes-title">Here are the recipes that include {{ query }}:</h3>
 
   {{#each recipeData as |recipe| }}
-  <div class="row mb-4 project">
+  <div class="recipe-wrapper">
     <div class="col-md-5">
       <h2>
         <!-- Call helper function with triple brackets to render the emoji span as HTML -->
@@ -40,8 +40,10 @@
     </div>
   </div>
   {{/each}}
-
+  <hr class="hr">
 {{/unless}}
+
+<a id="new-search" class="submit" href="/dashboard">New Search</a>
 
 
 

@@ -5,9 +5,9 @@
   <p id="recipe-text">{{recipe_text}}</p>
 </div>
 {{#if logged_in}}
-<form>
+<form id="comment-post-wrapper">
   <textarea id="commentText" project-id="{{id}}"></textarea>
-  <button id="postButton" project-id="{{id}}">Post your comment!</button>
+  <button id="postButton" class="submit" project-id="{{id}}">Post your comment!</button>
 </form>
 {{/if}}
 <br><br>

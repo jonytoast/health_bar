@@ -143,6 +143,7 @@ body {
     color:white;
     background-color: var(--grapes);
     margin-top: 10px;
+    margin-inline: 10px;
     padding: 7px 15px;
     border: 5px solid var(--seasalt);
     border-radius: 15px;
@@ -165,8 +166,9 @@ body {
 
 /* single recipe page styling */
 .single-recipe-wrapper {
-    text-align: center;
-
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #recipe-title {
@@ -175,12 +177,151 @@ body {
 
 #recipe-text {
     font-size: 1.2rem;
-    margin-inline: auto;
+    margin-left:auto;
+    margin-right:auto;
     padding-inline: 25px;
     padding-block: 45px;
-    background-color: white;
+    background-color: var(--silverware);
     border-radius: 25px;
     width: 85vw;
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+#recipe-text:hover {
+    background-color: white;
+    border: 7px solid var(--grapes);
+    box-shadow: 9px 9px grey;
+}
+
+#comment-post-wrapper {
+    text-align: center;
 }
 
 /* dashboard styling */
+.section-title {
+    font-size: 1.3rem;
+}
+
+#recipe-name {
+    width: 40vw;
+}
+
+#main-ingridient {
+    width: 30vw;
+    height: 1rem;
+    resize:none;
+}
+
+#search-bar-wrapper, #post-recipe-wrapper {
+    text-align: center;
+    background-color: var(--silverware);
+    padding-block: 25px;
+    padding-inline: 5px;
+    width: 80vw;
+    margin-inline:auto;
+    border-radius: 25px;
+    border: 10px solid white;
+    transition-property: all;
+    transition-duration: 0.3s;
+    margin-block: 15px;
+}
+
+#search-bar-wrapper:hover {
+    background-color: white;
+    border: 10px solid var(--peach);
+    box-shadow: 7px 7px grey;
+}
+
+#post-recipe-wrapper:hover {
+    background-color: white;
+    border: 10px solid var(--periwinkle);
+    box-shadow: 7px 7px grey;
+}
+
+#recipe-text {
+    width: 65vw;
+    height: 35vh;
+    margin-inline: 5px;
+    border-radius: 15px;
+    border:1px solid black;
+    padding-top:5px;
+    margin-block: 15px;
+    resize:vertical;
+}
+
+/* food nutrition page styling */
+#no-data-wrapper {
+    line-height: 2rem;
+    width: 45vw;
+    background-color: white;
+    border-radius: 15px;
+    text-align: center;
+    margin-block:35px;
+    margin-inline: auto;
+    padding-inline: 15px;
+    padding-top: 25px;
+    padding-bottom: 45px;
+}
+
+#nutrition-wrapper {
+    text-align: center;
+}
+
+#food-title {
+    font-size: 1.4rem;
+}
+
+@keyframes warning {
+    0% {
+        background-color: rgb(210, 248, 138);
+    }
+    50% {
+        background-color: #FE7297;
+    }
+    100% {
+        background-color: rgb(210, 248, 138);
+    }
+}
+
+#vegan {
+    font-size: 1.2rem;
+    width:fit-content;
+    padding-inline: 10px;
+    padding-block:5px;
+    margin-inline:auto;
+    background-color: rgb(210, 248, 138);
+    border-radius: 10px;
+    border:5px solid var(--silverware);
+    animation-name: warning;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+#nutrition-fact-box {
+    background-color: var(--silverware);
+    width: 65vw;
+    padding-block: 15px;
+    margin-inline: auto;
+    border-radius: 15px;
+    border: 5px solid var(--silverware);
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+#nutrition-fact-box:hover {
+    background-color: white;
+    border: 5px solid var(--periwinkle);
+    box-shadow: 7px 7px grey;
+}
+
+#related-recipes-title {
+    text-align: center;
+}
+
+#new-search {
+    text-align: center;
+    display: block;
+    width:fit-content;
+    margin-inline:auto;
+}
