@@ -17,8 +17,6 @@ const newFormHandler = async (event) => {
             },
         });
 
-        window.alert(`${title} and ${recipe_text} and ${main_ingredient}`);
-
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
