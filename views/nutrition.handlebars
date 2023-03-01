@@ -22,25 +22,32 @@
 
 {{#unless noResult}}
 
-  <h3 id="related-recipes-title">Here are the recipes that include {{ query }}:</h3>
+  {{#if recipeData.length}}
 
-  {{#each recipeData as |recipe| }}
-  <div class="recipe-wrapper">
-    <div class="col-md-5">
-      <h2>
-        <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-        {{{get_emoji}}}
-        <a href="/recipe/{{recipe.id}}">{{recipe.title}}</a>
-      </h2>
+    <h3 id="related-recipes-title">Here are the recipes that include {{ query }}:</h3>
+
+    {{#each recipeData as |recipe| }}
+    <div class="recipe-wrapper">
+      <div class="col-md-5">
+        <h2>
+          <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+          {{{get_emoji}}}
+          <a href="/recipe/{{recipe.id}}">{{recipe.title}}</a>
+        </h2>
+      </div>
+      <div class="col-md-7">
+        <p>
+          {{recipe.recipe_text}}
+        </p>
+      </div>
     </div>
-    <div class="col-md-7">
-      <p>
-        {{recipe.recipe_text}}
-      </p>
-    </div>
-  </div>
-  {{/each}}
-  <hr class="hr">
+    {{/each}}
+    <hr class="hr">
+  {{else}}
+    <h3 id="related-recipes-title">Oops! No recipe that includes {{ query }} yet!</h3>
+    <hr class="hr">
+  {{/if}}
+
 {{/unless}}
 
 <a id="new-search" class="submit" href="/dashboard">New Search</a>
