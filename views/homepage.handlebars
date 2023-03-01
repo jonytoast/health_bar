@@ -17,7 +17,7 @@
     <h2>
       <!-- Call helper function with triple brackets to render the emoji span as HTML -->
       {{{get_emoji}}}
-      <a href="/recipe/{{recipe.id}}">{{recipe.title}}</a>
+      <a class="recipe-title" href="/recipe/{{recipe.id}}">{{recipe.title}}</a>
     </h2>
     
     <p class="author">Posted by {{recipe.user.username}} on {{format_date recipe.createdAt}}</p>
