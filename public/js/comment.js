@@ -6,16 +6,16 @@ const submitButton = document.getElementById("postButton");
 const submitButtonHandler = async (event) => {
   event.preventDefault();
   const body = projectComment.value;
-  const project_id = submitButton.getAttribute("project-id");
+  const recipe_id = submitButton.getAttribute("project-id");
 
   if (!body) {
     window.alert("Please enter comment text.");
   };
 
-  if (body && project_id) {
+  if (body && recipe_id) {
     const newComment = await fetch('/api/comments/', {
       method: 'POST',
-      body: JSON.stringify({ body, project_id }),
+      body: JSON.stringify({ body, recipe_id }),
       headers: { 'Content-Type': 'application/json' },
     });
 

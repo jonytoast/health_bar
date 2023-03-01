@@ -31,7 +31,6 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    //I THINK THERE IS AN ERROR HERE AND IT IS SHOWING FALSE WHEN IT SHOULD BE TRUE
     const validPassword = await userData.checkPassword(req.body.password);
 
     console.log("valid password", validPassword);
