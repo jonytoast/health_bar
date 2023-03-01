@@ -16,6 +16,13 @@ html {
     background-color: var(--dough);
 }
 
+.hr {
+    height: 5px;
+    width: 70vw;
+    background-color: grey;
+    border-radius: 5px;
+}
+
 a {
     color: black;
     text-decoration: none;
@@ -108,7 +115,53 @@ body {
 }
 
 /* login page styling */
+#login-signup-wrapper {
+    margin-top: 35px;
+}
 
+#login-wrapper, #signup-wrapper {
+    line-height: 2rem;
+    text-align: center;
+    background-color: var(--silverware);
+    border-radius: 25px;
+    border: 10px solid white;
+    padding-inline: 15px;
+    padding-block: 15px;
+    margin-block: 15px;
+    margin-inline: 25px;
+    transition-property: all;
+    transition-duration: 0.5s;
+}
+
+#login-wrapper:hover, #signup-wrapper:hover {
+    border: 10px solid var(--periwinkle);
+    background-color: white;
+}
+
+.submit {
+    cursor: pointer;
+    color:white;
+    background-color: var(--grapes);
+    margin-top: 10px;
+    padding: 7px 15px;
+    border: 5px solid var(--seasalt);
+    border-radius: 15px;
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+.submit:hover {
+    box-shadow: 3px 3px grey;
+    color: black;
+    background-color: white;
+}
+.submit:active {
+    transition:none;
+    border: 5px solid var(--silverware);
+    box-shadow: none;
+    color:white;
+    background-color: grey;
+}
 
 /* single recipe page styling */
 .single-recipe-wrapper {
@@ -129,3 +182,5 @@ body {
     border-radius: 25px;
     width: 85vw;
 }
+
+/* dashboard styling */
