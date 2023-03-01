@@ -38,7 +38,8 @@
       </div>
     </form>
   </div>
-
+</div>
+<div id="previous-recipe-wrapper">
   {{#if recipes.length}}
   <div class="col-md-6 project-list">
     <h3>Your Recipe Posts:</h3>
@@ -46,18 +47,22 @@
     {{#each recipes as |recipe|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/recipe/{{recipe.id}}">{{recipe.title}}</a></h4>
+        <h4 class="previous-titles"><a href="/recipe/{{recipe.id}}">{{recipe.title}}</a></h4>
       </div>
       <div class="col-md-2">
-        <button class="btn btn-sm btn-danger" id="deletepostbutton" data-id="{{recipe.id}}">DELETE</button>
+        <button class="btn btn-sm btn-danger submit" id="deletepostbutton" data-id="{{recipe.id}}">DELETE</button>
       </div>
       <div class="col-md-2">
-        <button class="btn btn-sm btn-danger" id="updatepostbutton" data-id="{{recipe.id}}">UPDATE</button>
+        <button class="btn btn-sm btn-danger submit" id="updatepostbutton" data-id="{{recipe.id}}">UPDATE</button>
       </div>
     </div>
     {{/each}}
   </div>
+  {{else}}
+  <h3>Your Recipe Posts:</h3>
+  <p>You haven't posted any recipe yet!</p>
   {{/if}}
+
 </div>
 
 <script src="./js/dashboard.js"></script>

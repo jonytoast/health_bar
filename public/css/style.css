@@ -1,7 +1,7 @@
+/* css variables */
 :root {
 
     --salmon: #E8A39B;
-    --peach: #F0C1BC;
     --nude: #F6D4CB;
     --paste: #F8F7FD;
     --lilac: #DCCEE8;
@@ -11,16 +11,16 @@
     --pink: #F5CEEA;
     --periwinkle: #96BEE3;
     --violet: #5957B1;
-    --eggshell: #EEEEEE;
     --custard: #fbfb8b;
     --leaves: rgb(210, 255, 194);
     --warning: rgb(255, 99, 99);
 
 }
 
+/* global styling */
 html {
     scroll-behavior: smooth;
-    background-color: var(--water);
+    background: linear-gradient(180deg, var(--water) 0%, var(--nude) 100%);
 }
 
 .hr {
@@ -42,12 +42,12 @@ a:hover {
 
 /* main styling */
 body {
-    font-family: 'Caveat', cursive;
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
 #header {
     color:white;
-    font-family: 'Special Elite', cursive;
+    font-family:'Lilita One', cursive;
     font-size: 1.2rem;
     text-align: center;
     padding-block: 20px;
@@ -107,15 +107,33 @@ body {
 }
 
 .recipe-wrapper {
+    position:relative;
     text-align: center;
     margin-inline: 15px;
     padding-inline: 25px;
     border: 5px solid var(--periwinkle);
     background-color: var(--custard);
     border-radius: 15px;
-    margin-block: 10px;
+    margin-block: 30px;
     transition-property: all;
     transition-duration: 0.3s;
+}
+
+.recipe-wrapper::after {
+    content: "";
+    position: absolute;
+    top: -25px;
+    left:25px;
+    height: 25px;
+    width: 120px;
+    border-radius: 5px 5px 0 0;
+    background-color: var(--periwinkle);
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+.recipe-wrapper:hover::after {
+    background-color: var(--custard);
 }
 
 .recipe-wrapper:hover {
@@ -124,13 +142,17 @@ body {
     box-shadow: 7px 7px grey;
 }
 
+.homepage-title {
+    text-align: center;
+}
+
 /* login page styling */
 #login-signup-wrapper {
     margin-top: 35px;
 }
 
 #login-wrapper, #signup-wrapper {
-    font-family: 'Audiowide', cursive;
+    font-family: 'Ropa Sans', sans-serif;
     line-height: 2rem;
     text-align: center;
     background-color: var(--custard);
@@ -151,7 +173,7 @@ body {
 }
 
 .submit {
-    font-family: 'Audiowide', cursive;
+    font-family: 'Ropa Sans', sans-serif;
     cursor: pointer;
     color:white;
     background-color: var(--grapes);
@@ -179,11 +201,15 @@ body {
 
 /* all recipes page styling */
 #all-recipes-title {
-    font-family: 'Audiowide', cursive;
+    font-family: 'Ropa Sans', sans-serif;
 }
 
 .listOfRecipes {
     text-align: center;
+}
+
+.author {
+    font-family: 'Ropa Sans', sans-serif;;
 }
 
 /* single recipe page styling */
@@ -217,12 +243,12 @@ body {
 }
 
 #comment-post-wrapper {
-    font-family: 'Audiowide', cursive;
+    font-family: 'Ropa Sans', sans-serif;
     text-align: center;
 }
 
 #commentText {
-    font-family: 'Audiowide', cursive;
+    font-family: 'Ropa Sans', sans-serif;
     display:block;
     margin-inline:auto;
     width: 40vw;
@@ -230,7 +256,7 @@ body {
 }
 
 #comments-wrapper {
-    font-family: 'Audiowide', cursive;
+    font-family: 'Ropa Sans', sans-serif;
     text-align: center;
 }
 
@@ -267,8 +293,12 @@ body {
     resize:none;
 }
 
-#search-bar-wrapper, #post-recipe-wrapper {
-    font-family: 'Audiowide', cursive;
+.previous-titles {
+    font-family: 'Gloria Hallelujah', cursive;;
+}
+
+#search-bar-wrapper, #post-recipe-wrapper, #previous-recipe-wrapper {
+    font-family: 'Ropa Sans', sans-serif;
     text-align: center;
     background-color: var(--custard);
     padding-block: 25px;
@@ -294,6 +324,12 @@ body {
     box-shadow: 7px 7px grey;
 }
 
+#previous-recipe-wrapper:hover {
+    background-color: white;
+    border: 10px solid var(--salmon);
+    box-shadow: 7px 7px grey;
+}
+
 #recipe-text {
     width: 65vw;
     height: 35vh;
@@ -307,7 +343,7 @@ body {
 
 /* food nutrition page styling */
 #no-data-wrapper {
-    font-family: 'Audiowide', cursive;
+    font-family: 'Ropa Sans', sans-serif;
     line-height: 2rem;
     width: 45vw;
     background-color: white;
@@ -321,7 +357,7 @@ body {
 }
 
 #nutrition-wrapper {
-    font-family: 'Audiowide', cursive;
+    font-family: 'Ropa Sans', sans-serif;
     text-align: center;
 }
 
@@ -373,7 +409,7 @@ body {
 }
 
 #related-recipes-title {
-    font-family: 'Audiowide', cursive;
+    font-family: 'Ropa Sans', sans-serif;
     text-align: center;
 }
 
@@ -383,3 +419,5 @@ body {
     width:fit-content;
     margin-inline:auto;
 }
+
+/* media queries for smaller viewports
