@@ -119,11 +119,24 @@ body {
     transition-duration: 0.3s;
 }
 
-.recipe-wrapper::after {
+.recipe-wrapper:nth-of-type(odd)::after {
     content: "";
     position: absolute;
     top: -25px;
     left:25px;
+    height: 25px;
+    width: 120px;
+    border-radius: 5px 5px 0 0;
+    background-color: var(--periwinkle);
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+.recipe-wrapper:nth-of-type(even)::after {
+    content: "";
+    position: absolute;
+    top: -25px;
+    right:25px;
     height: 25px;
     width: 120px;
     border-radius: 5px 5px 0 0;
