@@ -18,15 +18,15 @@
 
   <div class="previousComments">
     {{#each comments as |comment|}}
-    <div class="previous-comment" project-id="{{comment.project_id}}" comment-id="{{comment.id}}">
+    <div class="previous-comment" project-id="{{comment.recipe_id}}" comment-id="{{comment.id}}">
       <h6>Commented by {{comment.user.username}} on {{format_date comment.createdAt}}:</h6>
       <p>{{comment.comment_text}}</p>
       {{!-- Only delete/edit comments if they are the owner of it (by nature, this means they must also be logged in to
       delete/edit their own comments) --}}
       {{#if (is_commenter comment.user.id ../user_id)}}
-      <button class="deleteButton" id="deleteButton" project-id="{{comment.project_id}}"
+      <button class="deleteButton" id="deleteButton" project-id="{{comment.recipe_id}}"
         comment-id="{{comment.id}}">Delete Your Comment</button>
-      <button class="editButton" id="editButton" project-id="{{comment.project_id}}" comment-id="{{comment.id}}">Edit
+      <button class="editButton" id="editButton" project-id="{{comment.recipe_id}}" comment-id="{{comment.id}}">Edit
         Your Comment</button>
       {{/if}}
 
