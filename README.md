@@ -1,4 +1,4 @@
-# Healthy Guru
+# Recipe Health Guru
 
 ## Description
 
@@ -6,7 +6,7 @@ Healthy Guru is a social network where users can look for multiple recipes takin
 https://fdc.nal.usda.gov/api-guide.html use the FDC api 
 
 
-## table of Contents
+## Table of Contents
 - [Description](#Description)
 - [Installation](#Installation)
 - [Usage](#Usage)
@@ -18,6 +18,7 @@ https://fdc.nal.usda.gov/api-guide.html use the FDC api
 
 ## Installation
 
+N/A
 
 
 ## Usage
