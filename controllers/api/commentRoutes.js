@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Comment } = require('../../models');
+const { Comment, User, Recipe } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //add a comment (use withAuth middleware to authenticate access)
@@ -11,6 +11,7 @@ router.post('/', withAuth, async (req, res) => {
       commenter_id: req.session.user_id,
       recipe_id: req.body.recipe_id,
     });
+
 
     res.status(200).json(newComment);
   } catch (err) {

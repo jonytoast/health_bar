@@ -13,7 +13,7 @@ Recipe.belongsTo(User, {
 });
 
 Comment.belongsTo(User, {
-  foreignKey: 'recipe_id'
+  foreignKey: 'commenter_id'
 });
 
 Comment.belongsTo(Recipe, {
