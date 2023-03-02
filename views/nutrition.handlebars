@@ -7,15 +7,22 @@
 {{else}}
   <div id="nutrition-wrapper">
     <h3 id="food-title">{{result.foodName}}</h3>
+    {{#if result.isVegan}}
     <h5 id="vegan">{{result.isVegan}}</h5>
+    {{/if}}
     <h3>Serving Size: {{result.servingSize}} {{result.unit}}</h3>
     <div id="nutrition-fact-box">
       <h3>Nutritional Facts:</h3>
-      {{#each result.nutrients as |nutrient|}}
+      {{#if result.nutrients.length}}
+        {{#each result.nutrients as |nutrient|}}
 
-          <p>{{nutrient.nutrientName}}: {{nutrient.value}} {{nutrient.unitName}}</p>
+            <p>{{nutrient.nutrientName}}: {{nutrient.value}} {{nutrient.unitName}}</p>
 
-      {{/each}}
+        {{/each}}
+      {{else}}
+        <p>Oops! Nutritional Fact Data Not Found!</p>
+        <p>Tip: Try to Refine your Search</p>
+      {{/if}}
     </div>
   </div>
 {{/if}}

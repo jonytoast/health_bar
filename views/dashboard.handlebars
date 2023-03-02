@@ -8,7 +8,7 @@
   <h3 class="section-title">Food Nutritional Facts Checker:</h3>
   <div class="form-group">
     <label for="food-query">Enter Food Name:</label>
-    <input class="form-input" type="text" id="food-query" placeholder="for example: salmon"/>
+    <input class="form-input" type="text" id="food-query" placeholder="salmon"/>
     <button id="search" type="submit" class="btn btn-primary submit">Search</button>
   </div>
 </div>
@@ -20,12 +20,12 @@
     <form class="form new-recipe">
       <div class="form-group">
         <label for="recipe-name">Recipe Title:</label>
-        <input class="form-input" type="text" id="recipe-name" placeholder="for example: Chicken Noodle Soupe"/>
+        <input class="form-input" type="text" id="recipe-name" placeholder="Chicken Noodle Soup"/>
       </div>
       <br>
       <div class="form-group">
         <label for="main-ingredient">Main Ingredient in Recipe:</label>
-        <input class="form-input" id="main-ingridient" placeholder="for example: chicken"></input>
+        <input class="form-input" id="main-ingridient" placeholder="chicken"></input>
       </div>
       <br>
       <div class="form-group">
@@ -45,14 +45,14 @@
     <h3>Your Recipe Posts:</h3>
 
     {{#each recipes as |recipe|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
+    <div class="user-recipe">
+      <div>
         <h4 class="previous-titles"><a href="/recipe/{{recipe.id}}">{{recipe.title}}</a></h4>
       </div>
-      <div class="col-md-2">
+      <div class="buttons">
         <button class="btn btn-sm btn-danger submit" id="deletepostbutton" data-id="{{recipe.id}}">DELETE</button>
       </div>
-      <div class="col-md-2">
+      <div class="buttons">
         <button class="btn btn-sm btn-danger submit" id="updatepostbutton" data-id="{{recipe.id}}">UPDATE</button>
       </div>
     </div>
