@@ -2,7 +2,7 @@
 
 ## Description
 
-Healthy Guru is a social network where users can look for multiple recipes taking into account the ingredients they have at home, being displayed with the nutritional facts for each ingredient. Users can also comment and add ratings/reviews to other recipes and follow other user's accounts. In order to post or interact with the website the user will have to log in (withAuth) to have full access to the content. 
+Recipe Health Guru is a social network where users can look for multiple recipes taking into account the ingredients they have at home, being displayed with the nutritional facts for each ingredient. Users can also comment and add ratings/reviews to other recipes and follow other user's accounts. In order to post or interact with the website the user will have to log in (withAuth) to have full access to the content. 
 https://fdc.nal.usda.gov/api-guide.html use the FDC api 
 
 
