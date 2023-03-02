@@ -82,6 +82,10 @@ body {
     transition-duration: 0.5s;
 }
 
+#footer-wrapper {
+    margin-top: 35px;
+}
+
 #header:hover {
     background-color: var(--plum);
     border: 15px solid var(--grapes);
@@ -278,6 +282,7 @@ body {
 }
 
 #recipe-text {
+    overflow-y: scroll;
     font-size: 1.2rem;
     margin-left:auto;
     margin-right:auto;
@@ -349,6 +354,7 @@ body {
 
 .previous-titles {
     font-family: 'Gloria Hallelujah', cursive;;
+    margin-bottom: 0;
 }
 
 #search-bar-wrapper, #post-recipe-wrapper, #previous-recipe-wrapper {
@@ -393,6 +399,25 @@ body {
     padding-top:5px;
     margin-block: 15px;
     resize:vertical;
+}
+
+.buttons {
+    display: inline;
+}
+
+.user-recipe {
+    background-color: var(--pink);
+    padding-block: 5px;
+    margin-block:10px;
+    border-radius: 15px;
+    margin-inline: 30px;
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+.user-recipe:hover {
+    background-color: var(--water);
+    box-shadow: 5px 5px grey;
 }
 
 /* food nutrition page styling */
@@ -474,4 +499,47 @@ body {
     margin-inline:auto;
 }
 
-/* media queries for smaller viewports
+/* media queries for smaller viewports */
+@media screen and (max-width: 640px) {
+
+    #header, #footer-wrapper {
+        font-size: 0.8rem;
+    }
+
+    .greeting {
+        font-size: 1rem;
+    }
+
+    .listOfRecipes {
+        font-size: 0.8rem;
+    }
+    
+    #recipe-title {
+        font-size: 1.5rem;
+    }
+
+    .recipe-title {
+        font-size: 1rem;
+    }
+
+    .recipe-text {
+        font-size: 0.8rem;
+    }
+
+    .author {
+        font-size: 0.8rem;
+    }
+    
+    #recipe-text {
+        font-size: 0.9rem;
+        width: 60vw;
+    }
+
+    .homepage-title {
+        font-size: 1rem;
+    }
+    
+    
+
+
+}

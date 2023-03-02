@@ -23,7 +23,7 @@ router.get('/:name',async (req,res) =>{
                     [Op.like]: '%' + query + '%'
                 }
             }
-        });
+        }); 
 
         const recipeData = recipes.map((recipe)=>
         recipe.get({plain:true}));
@@ -49,44 +49,80 @@ router.get('/:name',async (req,res) =>{
 
             } else {
 
-                const vegan = isVegan.isVeganIngredient(req.params.name.toLowerCase());
+                if (req.params.name.split(" ").length > 1) {
 
-                let veganWarning;
+                    
 
-                if (vegan) {
-                    veganWarning = "This ingredient is vegan!"
+                    const servingSize = Math.round(data.foods[0].servingSize);
+                    const unit = data.foods[0].servingSizeUnit;
+        
+                    if (servingSize.length === 0 || unit.length ===0 ) {
+                        console.log("Data Not Found. Please Try Again!");
+                        return;
+                    };
+        
+                    const nutrients = data.foods[0].foodNutrients;
+                    const filteredNutrients = nutrients.filter((nutrient)=>{
+                        if (nutrient.value !== 0) {
+                            return true;
+                        } else {
+                            return false
+                        }
+                    });
+    
+                    const result = {
+                        foodName: req.params.name.toUpperCase(),
+                        servingSize: servingSize,
+                        unit: unit,
+                        nutrients: filteredNutrients,
+                    };
+    
+           
+                    res.status(200).render('nutrition',{ result, query, recipeData });
+                    
+                    
                 } else {
-                    veganWarning = "This ingredient is NOT vegan!"
-                };
 
-                const servingSize = Math.round(data.foods[0].servingSize);
-                const unit = data.foods[0].servingSizeUnit;
-    
-                if (servingSize.length === 0 || unit.length ===0 ) {
-                    console.log("Data Not Found. Please Try Again!");
-                    return;
-                };
-    
-                const nutrients = data.foods[0].foodNutrients;
-                const filteredNutrients = nutrients.filter((nutrient)=>{
-                    if (nutrient.value !== 0) {
-                        return true;
+                    const vegan = isVegan.isVeganIngredient(req.params.name.toLowerCase());
+
+                    let veganWarning;
+
+                    if (vegan) {
+                        veganWarning = "This ingredient is vegan!"
                     } else {
-                        return false
-                    }
-                });
+                        veganWarning = "This ingredient is NOT vegan!"
+                    };
 
-                const result = {
-                    foodName: req.params.name.toUpperCase(),
-                    servingSize: servingSize,
-                    unit: unit,
-                    nutrients: filteredNutrients,
-                    isVegan: veganWarning
+                    const servingSize = Math.round(data.foods[0].servingSize);
+                    const unit = data.foods[0].servingSizeUnit;
+        
+                    if (servingSize.length === 0 || unit.length ===0 ) {
+                        console.log("Data Not Found. Please Try Again!");
+                        return;
+                    };
+        
+                    const nutrients = data.foods[0].foodNutrients;
+                    const filteredNutrients = nutrients.filter((nutrient)=>{
+                        if (nutrient.value !== 0) {
+                            return true;
+                        } else {
+                            return false
+                        }
+                    });
+    
+                    const result = {
+                        foodName: req.params.name.toUpperCase(),
+                        servingSize: servingSize,
+                        unit: unit,
+                        nutrients: filteredNutrients,
+                        isVegan: veganWarning
+                    };
+    
+                    res.status(200).render('nutrition',{ result, query, recipeData });
+                
                 };
 
-       
 
-                res.status(200).render('nutrition',{ result, query, recipeData })
 
       
             }
