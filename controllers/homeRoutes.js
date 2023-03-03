@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Recipe, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+// Get route for homepage
 router.get('/', async (req, res) => {
   try {
     // Get all recipes and JOIN with user data
@@ -16,7 +17,7 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    // if they are logged in, return user information (and if not ignore this entirely basically)
+    // If they are logged in, return user information, and if not, return nothing
     var userInformation = async (req, res) => {
       if (req.session.logged_in) {
         const userData = await User.findByPk(req.session.user_id, {
@@ -49,7 +50,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// load all recipes for the /recipes page
+// Load all recipes for the /recipes page
 router.get('/recipes', async (req, res) => {
   try {
     // Get all recipes and JOIN with user data
@@ -78,7 +79,7 @@ router.get('/recipes', async (req, res) => {
   }
 });
 
-// login route
+// Login route
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to dashboard route
   if (req.session.logged_in) {
@@ -91,8 +92,8 @@ router.get('/login', (req, res) => {
   });
 });
 
-// Use withAuth middleware to prevent access to route (NEED TO ADD BACK)
-// get dashboard
+// Use withAuth middleware to prevent access to route
+// Get route for the dashboard
 router.get('/dashboard', withAuth, async (req, res) => {
 
   try {
@@ -113,7 +114,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-//get one particular recipe 
+// Get one particular recipe 
 router.get('/recipe/:id', async (req, res) => {
   try {
     const recipeData = await Recipe.findByPk(req.params.id, {

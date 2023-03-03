@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Recipe } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-//post a recipe
+// Post a recipe
 router.post('/', withAuth, async (req, res) => {
   try {
 
@@ -21,7 +21,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-//delete a recipe
+// Delete a recipe
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const recipeData = await Recipe.destroy({
@@ -41,7 +41,7 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-//update a recipe/post
+// Update a recipe/post
 router.put('/:id', withAuth, async (req, res) => {
   try {
 
