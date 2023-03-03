@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 //post a recipe
 router.post('/', withAuth, async (req, res) => {
   try {
-    console.log(req.session.user_id);
+
 
     const newRecipe = await Recipe.create({
       title: req.body.title,
@@ -13,7 +13,7 @@ router.post('/', withAuth, async (req, res) => {
       main_ingredient: req.body.main_ingredient,
       user_id: req.session.user_id
     });
-    console.log(newRecipe);
+
 
     res.status(200).json(newRecipe);
   } catch (err) {

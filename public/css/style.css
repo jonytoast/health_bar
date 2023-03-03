@@ -407,6 +407,8 @@ body {
 
 .buttons {
     display: inline;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .user-recipe {
