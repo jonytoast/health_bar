@@ -30,4 +30,5 @@ Recipe.hasMany(Comment, {
   onDelete: 'CASCADE'
 });
 
+// exports associated Models
 module.exports = { User, Recipe, Comment };

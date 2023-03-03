@@ -7,4 +7,5 @@ const withAuth = (req, res, next) => {
   }
 };
 
+// exports helper function
 module.exports = withAuth;
