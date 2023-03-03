@@ -6,7 +6,7 @@ const newFormHandler = async (event) => {
     const recipe_text = document.querySelector('#recipe-text').value.trim();
     const main_ingredient = document.querySelector('#main-ingridient').value.trim();
 
-    if (title.length ===0 || receipt_text.length ===0 || main_ingredient.length ===0) {
+    if (title.length ===0 || recipe_text.length ===0 || main_ingredient.length ===0) {
         window.alert("Please fill out recipe title, main ingredient, and text!");
         return;
     }
@@ -28,7 +28,7 @@ const newFormHandler = async (event) => {
     };
 };
 
-//NEED TO MAKE THIS WORK
+
 // handle deleting a project (post)
 const delButtonHandler = async (event) => {
     event.preventDefault();

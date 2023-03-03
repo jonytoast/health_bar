@@ -50,7 +50,7 @@ const deleteButtonHandler = async (event) => {
 //updating a comment
 const editButtonHandler = async (event) => {
   const comment_id = event.target.getAttribute("comment-id");
-  const updatedText = window.prompt("What do you want to update the comment to say?");
+  const updatedText = window.prompt("Please enter updated comment:");
 
   if (updatedText && comment_id) {
     const updateComment = await fetch(`/api/comments/${comment_id}`, {
