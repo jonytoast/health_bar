@@ -20,7 +20,7 @@
 /* global styling */
 html {
     scroll-behavior: smooth;
-    background: linear-gradient(180deg, var(--water) 0%, var(--nude) 100%);
+    /*background: linear-gradient(180deg, var(--water) 0%, var(--nude) 100%);*/
 }
 
 .hr {
@@ -68,6 +68,11 @@ a:hover {
 body {
     font-family: 'Gloria Hallelujah', cursive;
     min-height: 100vh;
+    background-image: url("/assets/images/backdrop.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition-property: all;
+    transition-duration: 0.3s;
 }
 
 #header, #footer-wrapper {
@@ -186,7 +191,7 @@ body {
 .recipe-title:hover {
     animation: none;
     color: var(--grapes);
-    text-shadow: 2px 2px grey;
+    text-shadow: 2px 2px rgba(0,0,0,0.5);
 }
 
 .recipe-title:active {
@@ -201,7 +206,7 @@ body {
 .recipe-wrapper:hover {
     background-color: white;
     border: 5px solid var(--custard);
-    box-shadow: 7px 7px grey;
+    box-shadow: 7px 7px rgba(0,0,0,0.5);
 }
 
 .homepage-title {
@@ -232,7 +237,7 @@ body {
 #login-wrapper:hover, #signup-wrapper:hover {
     border: 10px solid var(--custard);
     background-color: white;
-    box-shadow: 7px 7px grey;
+    box-shadow: 7px 7px rgba(0,0,0,0.5);
 }
 
 .submit {
@@ -250,7 +255,7 @@ body {
 }
 
 .submit:hover {
-    box-shadow: 3px 3px grey;
+    box-shadow: 3px 3px rgba(0,0,0,0.5);
     color: black;
     background-color: white;
 }
@@ -303,7 +308,7 @@ body {
 #recipe-text:hover {
     background-color: white;
     border: 7px solid var(--grapes);
-    box-shadow: 9px 9px grey;
+    box-shadow: 9px 9px rgba(0,0,0,0.5);
 }
 
 #comment-post-wrapper {
@@ -339,7 +344,7 @@ body {
 .previous-comment:hover {
     background-color: white;
     border: 5px solid var(--paste);
-    box-shadow: 6px 6px grey;
+    box-shadow: 6px 6px rgba(0,0,0,0.5);
 }
 
 /* dashboard styling */
@@ -380,19 +385,19 @@ body {
 #search-bar-wrapper:hover {
     background-color: white;
     border: 10px solid var(--pink);
-    box-shadow: 7px 7px grey;
+    box-shadow: 7px 7px rgba(0,0,0,0.5);
 }
 
 #post-recipe-wrapper:hover {
     background-color: white;
     border: 10px solid var(--leaves);
-    box-shadow: 7px 7px grey;
+    box-shadow: 7px 7px rgba(0,0,0,0.5);
 }
 
 #previous-recipe-wrapper:hover {
     background-color: white;
     border: 10px solid var(--salmon);
-    box-shadow: 7px 7px grey;
+    box-shadow: 7px 7px rgba(0,0,0,0.5);
 }
 
 #recipe-text {
@@ -424,7 +429,7 @@ body {
 
 .user-recipe:hover {
     background-color: var(--water);
-    box-shadow: 5px 5px grey;
+    box-shadow: 5px 5px rgba(0,0,0,0.5);
 }
 
 /* food nutrition page styling */
@@ -492,7 +497,7 @@ body {
 #nutrition-fact-box:hover {
     background-color: white;
     border: 5px solid var(--grapes);
-    box-shadow: 7px 7px grey;
+    box-shadow: 7px 7px rgba(0,0,0,0.5);
 }
 
 #related-recipes-title {
@@ -553,6 +558,11 @@ body {
 
     #no-data-wrapper {
         margin-bottom: 35vh;
+    }
+
+    body {
+        background-image: url("/assets/images/mobile-backdrop.jpg");
+        background-position: center;
     }
     
 }
