@@ -15,6 +15,7 @@ router.get('/:name',async (req,res) =>{
 
     try {
 
+        // retrieves all recipes from database that contain the searched keyword
         const query = req.params.name;
 
         const recipes = await Recipe.findAll({
@@ -25,6 +26,7 @@ router.get('/:name',async (req,res) =>{
             }
         }); 
 
+        // formats retrieved recipe data
         const recipeData = recipes.map((recipe)=>
         recipe.get({plain:true}));
 
@@ -34,33 +36,33 @@ router.get('/:name',async (req,res) =>{
         .then(res => res.json())
         .then(data=> {
 
-
+            // if no food is found by API
             if (data.foods.length ===0) {
 
+                // render nutrition page with related recipes
                 const noResult = true;
                 res.status(404).render('nutrition',{ noResult, query, recipeData });
                 return;
 
+            // if serving size or unit of measure is not present in API result
             } else if (!data.foods[0].servingSize || !data.foods[0].servingSizeUnit) {
                 
+                // render nutrition page with related data
                 const noResult = true;
                 res.status(404).render('nutrition',{ noResult, query, recipeData });
                 return;
 
+            // if API returns sufficient data
             } else {
 
+                // if searched keyword is more than one word
                 if (req.params.name.split(" ").length > 1) {
 
-                    
-
+                    // responds without is-vegan warning
                     const servingSize = Math.round(data.foods[0].servingSize);
                     const unit = data.foods[0].servingSizeUnit;
         
-                    if (servingSize.length === 0 || unit.length ===0 ) {
-                        console.log("Data Not Found. Please Try Again!");
-                        return;
-                    };
-        
+                    // filters out nutrient items whose value is 0
                     const nutrients = data.foods[0].foodNutrients;
                     const filteredNutrients = nutrients.filter((nutrient)=>{
                         if (nutrient.value !== 0) {
@@ -70,6 +72,7 @@ router.get('/:name',async (req,res) =>{
                         }
                     });
     
+                    // constructs an object with necessary info to pass to handlebars
                     const result = {
                         foodName: req.params.name.toUpperCase(),
                         servingSize: servingSize,
@@ -77,16 +80,17 @@ router.get('/:name',async (req,res) =>{
                         nutrients: filteredNutrients,
                     };
     
-           
+                    // returns response and renders nutrition page with ingredient nutritional facts, searched keyword, and related recipe data
                     res.status(200).render('nutrition',{ result, query, recipeData });
                     
-                    
+                // renders nutrition page with is-vegan result 
                 } else {
 
                     const vegan = isVegan.isVeganIngredient(req.params.name.toLowerCase());
 
                     let veganWarning;
 
+                    // assigns the warning based on result from is-vegan method
                     if (vegan) {
                         veganWarning = "This ingredient is vegan!"
                     } else {
@@ -96,11 +100,7 @@ router.get('/:name',async (req,res) =>{
                     const servingSize = Math.round(data.foods[0].servingSize);
                     const unit = data.foods[0].servingSizeUnit;
         
-                    if (servingSize.length === 0 || unit.length ===0 ) {
-                        console.log("Data Not Found. Please Try Again!");
-                        return;
-                    };
-        
+                    // filters out unnecessary nutrient items whose value is 0
                     const nutrients = data.foods[0].foodNutrients;
                     const filteredNutrients = nutrients.filter((nutrient)=>{
                         if (nutrient.value !== 0) {
@@ -110,6 +110,7 @@ router.get('/:name',async (req,res) =>{
                         }
                     });
     
+                    // constructs an object of data to pass to handlebars
                     const result = {
                         foodName: req.params.name.toUpperCase(),
                         servingSize: servingSize,
@@ -118,19 +119,17 @@ router.get('/:name',async (req,res) =>{
                         isVegan: veganWarning
                     };
     
+                    // returns response and renders nutrition page with nutrition facts, searched keyword, and related recipes
                     res.status(200).render('nutrition',{ result, query, recipeData });
                 
                 };
 
-
-
-      
             }
 
 
         });
 
-
+    // catches and returns error message
     } catch(err) {
         res.status(500).json({ err: err.message });
     }
@@ -142,5 +141,5 @@ router.get('/:name',async (req,res) =>{
 
 
 
-
+// exports router
 module.exports = router;

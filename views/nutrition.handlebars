@@ -10,20 +10,24 @@
     {{#if result.isVegan}}
     <h5 id="vegan">{{result.isVegan}}</h5>
     {{/if}}
-    <h3>Serving Size: {{result.servingSize}} {{result.unit}}</h3>
-    <div id="nutrition-fact-box">
-      <h3>Nutritional Facts:</h3>
+
       {{#if result.nutrients.length}}
+        <div id="nutrition-fact-box">
+          <h3>Serving Size: {{result.servingSize}} {{result.unit}}</h3>
+          <h3>Nutritional Facts:</h3>
         {{#each result.nutrients as |nutrient|}}
 
             <p>{{nutrient.nutrientName}}: {{nutrient.value}} {{nutrient.unitName}}</p>
 
         {{/each}}
+        </div>
       {{else}}
-        <p>Oops! Nutritional Fact Data Not Found!</p>
-        <p>Tip: Try to Refine your Search</p>
+        <div id="nutrition-fact-box">
+          <p>Oops! Nutritional Fact Data Not Found!</p>
+          <p>Tip: Try to Refine your Search</p>
+        </div>
       {{/if}}
-    </div>
+
   </div>
 {{/if}}
 
@@ -39,7 +43,7 @@
         <h2>
           <!-- Call helper function with triple brackets to render the emoji span as HTML -->
           {{{get_emoji}}}
-          <a href="/recipe/{{recipe.id}}">{{recipe.title}}</a>
+          <a class="recipe-title" href="/recipe/{{recipe.id}}">{{recipe.title}}</a>
         </h2>
       </div>
       <div class="col-md-7">

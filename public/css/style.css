@@ -67,6 +67,7 @@ a:hover {
 /* main styling */
 body {
     font-family: 'Gloria Hallelujah', cursive;
+    min-height: 100vh;
 }
 
 #header, #footer-wrapper {
@@ -434,7 +435,8 @@ body {
     background-color: white;
     border-radius: 15px;
     text-align: center;
-    margin-block:35px;
+    margin-top:35px;
+    margin-bottom: 25vh;
     margin-inline: auto;
     padding-inline: 15px;
     padding-top: 25px;
@@ -548,7 +550,9 @@ body {
     .previous-comment {
         width: 85vw;
     }
+
+    #no-data-wrapper {
+        margin-bottom: 35vh;
+    }
     
-
-
 }

@@ -1,5 +1,5 @@
+// imports required packages
 require('dotenv').config();
-
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -13,9 +13,10 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Set up Handlebars.js engine with custom helpers
+// sets up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
 
+// sets up express session 
 const sess = {
   secret: 'Super secret secret',
   cookie: {
@@ -41,8 +42,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// switches router on
 app.use(routes);
 
+// syncs to database and switches on server
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Server initiated and listening on: http://localhost:${PORT}`));
 });
