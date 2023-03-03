@@ -76,7 +76,7 @@ body {
     text-align: center;
     padding-block: 20px;
     background-color: var(--periwinkle);
-    border: 10px solid var(--plum);
+    border: 1px solid var(--plum);
     border-radius: 35px;
     transition-property: all;
     transition-duration: 0.5s;
@@ -88,7 +88,7 @@ body {
 
 #header:hover {
     background-color: var(--plum);
-    border: 15px solid var(--grapes);
+    border: 10px solid var(--grapes);
 }
 
 #header:hover a {
@@ -97,6 +97,7 @@ body {
 
 #header a {
     color:white;
+    font-size: larger;
 }
 
 #header a:hover {
@@ -127,11 +128,13 @@ body {
     animation-name: shimmer;
     animation-duration: 2s;
     animation-iteration-count: infinite;
+    text-decoration: underline;
 }
 
 .greeting a:hover {
     animation: none;
     color: grey;
+    text-decoration: none;
 }
 
 .recipe-wrapper {
@@ -202,9 +205,10 @@ body {
 
 .homepage-title {
     text-align: center;
+    font-size:  27px;
 }
 
-/* login page styling */
+            /* login page styling */
 #login-signup-wrapper {
     margin-top: 35px;
 }
@@ -238,7 +242,7 @@ body {
     margin-top: 10px;
     margin-inline: 10px;
     padding: 7px 15px;
-    border: 5px solid var(--lilac);
+    border: 2px solid var(--lilac);
     border-radius: 15px;
     transition-property: all;
     transition-duration: 0.3s;
