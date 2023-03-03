@@ -7,6 +7,11 @@ async function handleFoodQuery() {
 
     const foodName = query.value.trim().toLowerCase();
 
+    if (foodName.length === 0) {
+        window.alert("Please enter an ingredient!");
+        return;
+    };
+
     const response = await fetch(`/api/nutrition/${foodName}`,{
         method: 'GET',
         headers: { 'Content-Type':'application/json' }

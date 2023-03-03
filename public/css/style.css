@@ -76,7 +76,7 @@ body {
     text-align: center;
     padding-block: 20px;
     background-color: var(--periwinkle);
-    border: 1px solid var(--plum);
+    border: 3px solid white;
     border-radius: 35px;
     transition-property: all;
     transition-duration: 0.5s;
@@ -255,7 +255,7 @@ body {
 }
 .submit:active {
     transition:none;
-    border: 5px solid var(--plum);
+    border: 2px solid var(--plum);
     box-shadow: none;
     color:white;
     background-color: grey;
