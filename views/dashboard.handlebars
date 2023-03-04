@@ -11,6 +11,12 @@
     <input class="form-input" type="text" id="food-query" placeholder="salmon"/>
     <button id="search" type="submit" class="btn btn-primary submit">Search</button>
   </div>
+  <div id="loading" style="display:none">
+    <div id="emoji">
+      {{{get_emoji}}}
+    </div>
+    <p id="loading-text">Fetching Food Data ...</p>
+  </div>
 </div>
 
 <div id="post-recipe-wrapper" class="row mt-4">
