@@ -157,7 +157,7 @@ body {
 }
 
 .recipe-wrapper:nth-of-type(odd)::after {
-    content: "";
+    content: "RECIPE";
     position: absolute;
     top: -25px;
     left:25px;
@@ -170,7 +170,7 @@ body {
 }
 
 .recipe-wrapper:nth-of-type(even)::after {
-    content: "";
+    content: "RECIPE";
     position: absolute;
     top: -25px;
     right:25px;
@@ -214,12 +214,13 @@ body {
     font-size:  27px;
 }
 
-            /* login page styling */
+/* login page styling */
 #login-signup-wrapper {
     margin-top: 35px;
 }
 
 #login-wrapper, #signup-wrapper {
+    position: relative;
     font-family: 'Ropa Sans', sans-serif;
     line-height: 2rem;
     text-align: center;
@@ -228,16 +229,52 @@ body {
     border: 10px solid var(--pink);
     padding-inline: 15px;
     padding-block: 15px;
-    margin-block: 15px;
+    margin-block: 35px;
     margin-inline: 25px;
     transition-property: all;
-    transition-duration: 0.5s;
+    transition-duration: 0.3s;
+}
+
+#login-wrapper::after {
+    font-family: 'Gloria Hallelujah', cursive;
+    content: "LOGIN";
+    position: absolute;
+    top: -35px;
+    left:25px;
+    height: 25px;
+    width: 120px;
+    border-radius: 10px 10px 0 0;
+    background-color: var(--pink);
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+#signup-wrapper::after {
+    font-family: 'Gloria Hallelujah', cursive;
+    content: "SIGNUP";
+    position: absolute;
+    top: -35px;
+    left:25px;
+    height: 25px;
+    width: 120px;
+    border-radius: 10px 10px 0 0;
+    background-color: var(--pink);
+    transition-property: all;
+    transition-duration: 0.3s;
 }
 
 #login-wrapper:hover, #signup-wrapper:hover {
     border: 10px solid var(--custard);
     background-color: white;
     box-shadow: 7px 7px rgba(0,0,0,0.5);
+}
+
+#login-wrapper:hover::after {
+    background-color: var(--custard);
+}
+
+#signup-wrapper:hover::after {
+    background-color: var(--custard);
 }
 
 .submit {
@@ -371,6 +408,7 @@ body {
 
 #loading {
     position: fixed;
+    z-index: 100;
     top: 150px;
     left: 7.5vw;
     background-color: rgba(0,0,0,0.8);
@@ -412,6 +450,7 @@ body {
 }
 
 #search-bar-wrapper, #post-recipe-wrapper, #previous-recipe-wrapper {
+    position: relative;
     font-family: 'Ropa Sans', sans-serif;
     text-align: center;
     background-color: var(--custard);
@@ -423,7 +462,25 @@ body {
     border: 10px solid var(--periwinkle);
     transition-property: all;
     transition-duration: 0.3s;
-    margin-block: 15px;
+    margin-block: 35px;
+}
+
+#search-bar-wrapper::after {
+    font-family: 'Gloria Hallelujah', cursive;
+    content: "FOOD CHECKER";
+    position: absolute;
+    top: -35px;
+    left:25px;
+    height: 25px;
+    width: 140px;
+    border-radius: 10px 10px 0 0;
+    background-color: var(--periwinkle);
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+#search-bar-wrapper:hover::after{
+    background-color: var(--pink);
 }
 
 #search-bar-wrapper:hover {
@@ -432,16 +489,52 @@ body {
     box-shadow: 7px 7px rgba(0,0,0,0.5);
 }
 
+#post-recipe-wrapper::after {
+    font-family: 'Gloria Hallelujah', cursive;
+    content: "NEW RECIPE";
+    position: absolute;
+    top: -35px;
+    left:25px;
+    height: 25px;
+    width: 140px;
+    border-radius: 10px 10px 0 0;
+    background-color: var(--periwinkle);
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+#post-recipe-wrapper:hover::after {
+    background-color: var(--leaves);
+}
+
 #post-recipe-wrapper:hover {
     background-color: white;
     border: 10px solid var(--leaves);
     box-shadow: 7px 7px rgba(0,0,0,0.5);
 }
 
+#previous-recipe-wrapper::after {
+    font-family: 'Gloria Hallelujah', cursive;
+    content: "YOUR RECIPES";
+    position: absolute;
+    top: -35px;
+    left:25px;
+    height: 25px;
+    width: 140px;
+    border-radius: 10px 10px 0 0;
+    background-color: var(--periwinkle);
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
 #previous-recipe-wrapper:hover {
     background-color: white;
     border: 10px solid var(--salmon);
     box-shadow: 7px 7px rgba(0,0,0,0.5);
+}
+
+#previous-recipe-wrapper:hover::after {
+    background-color: var(--salmon);
 }
 
 #recipe-text {
