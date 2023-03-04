@@ -9,9 +9,10 @@ const isVegan = require('is-vegan');
 const { Recipe } = require('../../models');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+const withAuth = require('../../utils/auth');
 
 // node-fetch GET request to retriece queried food's nutritional data
-router.get('/:name',async (req,res) =>{
+router.get('/:name',withAuth, async (req,res) =>{
 
     try {
 
