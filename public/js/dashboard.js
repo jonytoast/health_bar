@@ -1,5 +1,6 @@
 // selects update button
 const editRecipes = document.getElementsByClassName("update-recipe");
+const cancelButtons = document.getElementsByClassName("cancel");
 
 // handle submitting new project (post)
 const newFormHandler = async (event) => {
@@ -63,7 +64,7 @@ const editButtonHandler = async (event) => {
 
     // assigns recipe ID and save button to variables
     const id = event.target.getAttribute('data-id');
-    const saveButton = event.target.parentElement.nextSibling.nextSibling.children[0].children[6].children[0];
+    const saveButton = event.target.parentElement.nextSibling.nextSibling.children[0].children[6].children[1];
 
 
     // async function to save updated recipe
@@ -105,6 +106,11 @@ const editButtonHandler = async (event) => {
 
 };
 
+// reloads the dashboard page if users cancel recipe update
+function cancelUpdate() {
+    location.reload();
+};
+
 // determine if the user clicked the edit or delete button (and then redirect them to the corresponding function)
 const handleDelete = async (event) => {
 
@@ -114,10 +120,14 @@ const handleDelete = async (event) => {
 };
 
 
-// adds event listeners to each "update" button
+// adds event listeners to each "update" and "cancel" button
 for (editRecipe of editRecipes) {
     editRecipe.addEventListener("click",editButtonHandler); 
-}
+};
+
+for (cancelButton of cancelButtons) {
+    cancelButton.addEventListener("click",cancelUpdate);
+};
 
 // event listeners for new recipe posting and recipe deletion
 document
