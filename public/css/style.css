@@ -348,6 +348,50 @@ body {
 }
 
 /* dashboard styling */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 30%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+#loading {
+    position: fixed;
+    top: 150px;
+    left: 7.5vw;
+    background-color: rgba(0,0,0,0.8);
+    width: 85vw;
+    height:35vh;
+    border-radius: 25px;
+    font-size: 1.5rem;
+    padding-top: 50px;
+    color: white;
+}
+
+#emoji {
+    font-size: 5rem;
+    animation: spin 1s infinite ;
+    animation-timing-function: linear;
+}
+
+#loading-text {
+    animation: blink 1.5s infinite;
+}
+
 .section-title {
     font-size: 1.3rem;
 }
