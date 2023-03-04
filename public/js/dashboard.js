@@ -1,3 +1,6 @@
+// selects update button
+const editRecipes = document.getElementsByClassName("update-recipe");
+
 // handle submitting new project (post)
 const newFormHandler = async (event) => {
     event.preventDefault();
@@ -31,6 +34,7 @@ const newFormHandler = async (event) => {
 
 // handle deleting a project (post)
 const delButtonHandler = async (event) => {
+
     event.preventDefault();
     const recipe_id = event.target.getAttribute('data-id');
 
@@ -52,46 +56,74 @@ const delButtonHandler = async (event) => {
 // handle editing a project (post)
 const editButtonHandler = async (event) => {
     event.preventDefault();
+
+    // displays recipe update box
+    event.target.parentElement.nextSibling.nextSibling.removeAttribute("style","display:none");
+    event.target.setAttribute("style","display:none");
+
+    // assigns recipe ID and save button to variables
     const id = event.target.getAttribute('data-id');
-    const updatedName = window.prompt("Please enter recipe title:").toUpperCase();
-    const mainIngredient = window.prompt("Please enter main ingredient of recipe:");
-    const updatedBody = window.prompt("Please enter recipe text:");
+    const saveButton = event.target.parentElement.nextSibling.nextSibling.children[0].children[6].children[0];
 
 
+    // async function to save updated recipe
+    async function saveRecipe(e) {
 
-    if (updatedBody && updatedName && mainIngredient) {
-        const updateProject = await fetch(`/api/recipes/${id}`,
-            {
-                method: 'PUT',
-                body: JSON.stringify({ updatedName, updatedBody, mainIngredient }),
-                headers: { 'Content-Type': 'application/json' },
-            });
+        e.preventDefault();
 
-        if (updateProject.ok) {
-            // If successful, reload page with updated comment
-            window.location.reload();
-        } else {
-            window.alert('Failed to update post');
+        // select user input texts
+        const updatedName = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.children[1].value.trim().toUpperCase();
+        const mainIngredient = e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.children[1].value.trim();
+        const updatedBody = e.target.parentElement.previousElementSibling.previousElementSibling.children[1].value;
+
+        // if user misses any input box
+        if (updatedName.length === 0 || mainIngredient.length === 0 || updatedBody.length === 0) {
+            window.alert("Please fill out recipe title, main ingredient, and text to continue!");
+            return;
         };
-    };
+
+        // if all three input boxes are filled in
+        if (updatedBody && updatedName && mainIngredient) {
+            const updateProject = await fetch(`/api/recipes/${id}`,
+                {
+                    method: 'PUT',
+                    body: JSON.stringify({ updatedName, updatedBody, mainIngredient }),
+                    headers: { 'Content-Type': 'application/json' },
+                });
+    
+            if (updateProject.ok) {
+                // If successful, reload page with updated comment
+                window.location.reload();
+            } else {
+                window.alert('Failed to update post');
+            };
+        };
+    }
+
+    // event listener for the update recipe button
+    saveButton.addEventListener("click",saveRecipe);
+
 };
 
 // determine if the user clicked the edit or delete button (and then redirect them to the corresponding function)
-const handleEditOrDelete = async (event) => {
-
-    if (event.target.getAttribute("id") === "updatepostbutton") {
-        editButtonHandler(event);
-    };
+const handleDelete = async (event) => {
 
     if (event.target.getAttribute("id") === "deletepostbutton") {
         delButtonHandler(event);
     };
 };
 
+
+// adds event listeners to each "update" button
+for (editRecipe of editRecipes) {
+    editRecipe.addEventListener("click",editButtonHandler); 
+}
+
+// event listeners for new recipe posting and recipe deletion
 document
     .querySelector('.new-recipe')
     .addEventListener('submit', newFormHandler);
 
 document
     .querySelector('.project-list')
-    .addEventListener('click', handleEditOrDelete);
+    .addEventListener('click', handleDelete);
