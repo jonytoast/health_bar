@@ -6,14 +6,14 @@ const loadingScreen = document.getElementById('loading');
 // async function that handles user food nutrition queries and display related recipes if user is logged in
 async function handleFoodQuery() {
 
-    loadingScreen.removeAttribute('style',"display:none");
-
     const foodName = query.value.trim().toLowerCase();
 
     if (foodName.length === 0) {
         window.alert("Please enter an ingredient!");
         return;
-    };
+    } else {
+        loadingScreen.removeAttribute('style',"display:none");
+    }
 
     const response = await fetch(`/api/nutrition/${foodName}`,{
         method: 'GET',
