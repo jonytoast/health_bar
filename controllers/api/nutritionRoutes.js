@@ -39,18 +39,26 @@ router.get('/:name',withAuth, async (req,res) =>{
 
             // if no food is found by API
             if (data.foods.length ===0) {
-
+                
+                // saves user's login status to session and sends back response
+                req.session.logged_in = true;
                 // render nutrition page with related recipes
                 const noResult = true;
-                res.status(404).render('nutrition',{ noResult, query, recipeData });
+                res.status(404).render('nutrition',{ noResult, query, recipeData, logged_in:req.session.logged_in });
                 return;
 
             // if serving size or unit of measure is not present in API result
             } else if (!data.foods[0].servingSize || !data.foods[0].servingSizeUnit) {
                 
-                // render nutrition page with related data
-                const noResult = true;
-                res.status(404).render('nutrition',{ noResult, query, recipeData });
+                // saves user's login status to session and sends back response
+                req.session.save(async ()=>{
+                    req.session.logged_in = true;   
+                    // render nutrition page with related data
+                    const noResult = true;
+                    res.status(404).render('nutrition',{ noResult, query, recipeData, logged_in:req.session.logged_in });
+                    
+                });
+
                 return;
 
             // if API returns sufficient data
@@ -80,9 +88,15 @@ router.get('/:name',withAuth, async (req,res) =>{
                         unit: unit,
                         nutrients: filteredNutrients,
                     };
-    
-                    // returns response and renders nutrition page with ingredient nutritional facts, searched keyword, and related recipe data
-                    res.status(200).render('nutrition',{ result, query, recipeData });
+
+                    // saves user's login status to session and sends back response
+                    req.session.save(async ()=>{
+                        req.session.logged_in = true;   
+                        // returns response and renders nutrition page with ingredient nutritional facts, searched keyword, and related recipe data
+                        res.status(200).render('nutrition',{ result, query, recipeData, logged_in:req.session.logged_in });
+                    });
+
+                    return;
                     
                 // renders nutrition page with is-vegan result 
                 } else {
@@ -119,9 +133,17 @@ router.get('/:name',withAuth, async (req,res) =>{
                         nutrients: filteredNutrients,
                         isVegan: veganWarning
                     };
+
+                    // saves user's login status to session and sends back response
+                    req.session.save(async ()=>{
+                        req.session.logged_in = true;   
+                        // returns response and renders nutrition page with nutrition facts, searched keyword, and related recipes
+                        res.status(200).render('nutrition',{ result, query, recipeData, logged_in:req.session.logged_in });
+                    });
+
+                    return;
     
-                    // returns response and renders nutrition page with nutrition facts, searched keyword, and related recipes
-                    res.status(200).render('nutrition',{ result, query, recipeData });
+                    
                 
                 };
 
