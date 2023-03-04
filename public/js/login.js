@@ -6,6 +6,11 @@ const loginFormHandler = async (event) => {
   const email = document.querySelector('#email-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
 
+  if (email.length === 0 || password.length === 0) {
+    window.alert("Please enter email and password to login!");
+    return;
+  };
+
   if (email && password) {
     // Send a POST request to the API endpoint
     const response = await fetch('/api/users/login', {
@@ -20,7 +25,7 @@ const loginFormHandler = async (event) => {
     } else {
       alert('Failed to login');
     }
-  }
+  };
 };
 
 // user signing up
@@ -30,6 +35,11 @@ const signupFormHandler = async (event) => {
   const username = document.querySelector('#name-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
+
+  if (username.length === 0 || email.length === 0 || password.length === 0) {
+    window.alert("Please enter username, email, and password to signup!");
+    return;
+  };
 
   if (username && email && password) {
     const response = await fetch('/api/users', {
