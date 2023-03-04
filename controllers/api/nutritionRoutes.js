@@ -39,7 +39,8 @@ router.get('/:name',withAuth, async (req,res) =>{
 
             // if no food is found by API
             if (data.foods.length ===0) {
-
+                
+                // saves user's login status to session and sends back response
                 req.session.logged_in = true;
                 // render nutrition page with related recipes
                 const noResult = true;
@@ -49,6 +50,7 @@ router.get('/:name',withAuth, async (req,res) =>{
             // if serving size or unit of measure is not present in API result
             } else if (!data.foods[0].servingSize || !data.foods[0].servingSizeUnit) {
                 
+                // saves user's login status to session and sends back response
                 req.session.save(async ()=>{
                     req.session.logged_in = true;   
                     // render nutrition page with related data
@@ -87,9 +89,9 @@ router.get('/:name',withAuth, async (req,res) =>{
                         nutrients: filteredNutrients,
                     };
 
+                    // saves user's login status to session and sends back response
                     req.session.save(async ()=>{
                         req.session.logged_in = true;   
-                        // render nutrition page with related data
                         // returns response and renders nutrition page with ingredient nutritional facts, searched keyword, and related recipe data
                         res.status(200).render('nutrition',{ result, query, recipeData, logged_in:req.session.logged_in });
                     });
@@ -132,9 +134,9 @@ router.get('/:name',withAuth, async (req,res) =>{
                         isVegan: veganWarning
                     };
 
+                    // saves user's login status to session and sends back response
                     req.session.save(async ()=>{
                         req.session.logged_in = true;   
-                        // render nutrition page with related data
                         // returns response and renders nutrition page with nutrition facts, searched keyword, and related recipes
                         res.status(200).render('nutrition',{ result, query, recipeData, logged_in:req.session.logged_in });
                     });
