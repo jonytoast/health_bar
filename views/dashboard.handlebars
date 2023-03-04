@@ -53,7 +53,30 @@
         <button class="btn btn-sm btn-danger submit" id="deletepostbutton" data-id="{{recipe.id}}">DELETE</button>
       </div>
       <div class="buttons">
-        <button class="btn btn-sm btn-danger submit" id="updatepostbutton" data-id="{{recipe.id}}">UPDATE</button>
+        <button class="btn btn-sm btn-danger submit update-recipe" data-id="{{recipe.id}}">UPDATE</button>
+      </div>
+
+      <div class="edit-recipe-wrapper" style="display:none">
+        <form class="form">
+          <div class="form-group">
+            <label for="recipe-name">Recipe Title:</label>
+            <input class="form-input" type="text" id="recipe-name" placeholder="{{recipe.title}}"/>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="main-ingredient">Main Ingredient in Recipe:</label>
+            <input class="form-input" id="main-ingredient" placeholder="{{recipe.main_ingredient}}">
+          </div>
+          <br>
+          <div class="form-group">
+            <p>Enter Recipe Below:</p>
+            <textarea class="form-input update-text">{{recipe.recipe_text}}</textarea>
+          </div>
+          <br>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary submit">Update Recipe</button>
+          </div>
+        </form>
       </div>
     </div>
     {{/each}}

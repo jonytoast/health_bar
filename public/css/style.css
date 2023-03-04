@@ -432,6 +432,30 @@ body {
     box-shadow: 5px 5px rgba(0,0,0,0.5);
 }
 
+.update-text {
+    width: 60vw;
+    height: 40vh;
+    border-radius: 15px;
+    padding: 10px;
+    resize:vertical;
+    transition-property: all;
+    transition-duration: 0.3s;
+}
+
+.update-text:hover {
+    border: 3px solid var(--leaves);
+    box-shadow: 3px 3px rgba(0,0,0,0.5);
+}
+
+.edit-recipe-wrapper {
+    padding-bottom: 25px;
+    padding-inline: 15px;
+}
+
+.form-group {
+    margin-top: 20px;
+}
+
 /* food nutrition page styling */
 #no-data-wrapper {
     font-family: 'Ropa Sans', sans-serif;
@@ -563,6 +587,14 @@ body {
     body {
         background-image: url("/assets/images/mobile-backdrop.jpg");
         background-position: center;
+    }
+
+    .update-text {
+        width: 55vw; 
+    }
+
+    .user-recipe {
+        margin-inline: 10px;
     }
     
 }
