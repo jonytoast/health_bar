@@ -5,15 +5,40 @@ const { User } = require('../../models');
 router.post('/', async (req, res) => {
   try {
 
-    
-    const userData = await User.create(req.body);
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-
-      res.status(200).json(userData);
+    // checks if user already exists in database
+    const checkUsername = await User.findOne({
+      where:{
+        username: req.body.username
+      }
     });
+
+    const checkEmail = await User.findOne({
+      where:{
+        email: req.body.email
+      }
+    });
+
+    // if sequelize finds duplicate record in database
+    if (checkUsername !== null || checkEmail !== null) {
+      
+      res.status(409).json({message:"duplicate record"});
+      return;
+
+    // if user's signup info is not in the database yet
+    } else {
+
+      // sequelize creates new user data
+      const userData = await User.create(req.body);
+
+      req.session.save(() => {
+        req.session.user_id = userData.id;
+        req.session.logged_in = true;
+  
+        res.status(200).json(userData);
+      });
+
+    };
+
   } catch (err) {
     res.status(400).json(err);
   }
