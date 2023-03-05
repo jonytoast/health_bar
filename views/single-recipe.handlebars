@@ -25,7 +25,13 @@
       {{#if (is_commenter comment.user.id ../user_id)}}
       <button class="deleteButton buttons submit" id="deleteButton" project-id="{{comment.recipe_id}}"
         comment-id="{{comment.id}}">Delete Comment</button>
-      <button class="editButton buttons submit" id="editButton" project-id="{{comment.recipe_id}}" comment-id="{{comment.id}}">Edit Comment</button>
+      <button class="editButton buttons submit edit" id="editButton" project-id="{{comment.recipe_id}}" comment-id="{{comment.id}}">Edit Comment</button>
+      <form class="edit-comment-wrapper" style="display:none">
+        <h5>Edit Comment:</h5>
+        <textarea id="commentText" project-id="{{id}}">{{comment_text}}</textarea>
+        <button class="cancel buttons submit">Cancel</button>
+        <button class="save-button buttons submit">Update Comment</button>
+      </form>
       {{/if}}
 
     </div>

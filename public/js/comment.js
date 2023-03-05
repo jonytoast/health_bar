@@ -1,6 +1,8 @@
+// selects required html elements for event handlers
 const projectComment = document.getElementById("commentText");
-
 const submitButton = document.getElementById("postButton");
+const editButtons = document.getElementsByClassName('edit');
+const cancelButtons = document.getElementsByClassName("cancel")
 
 //submitting new comment
 const submitButtonHandler = async (event) => {
@@ -49,38 +51,79 @@ const deleteButtonHandler = async (event) => {
 
 //updating a comment
 const editButtonHandler = async (event) => {
+
+  event.preventDefault();
+
+  // displays edit comment section and hide edit comment button
+  event.target.nextSibling.nextElementSibling.removeAttribute("style","display:none");
+  event.target.setAttribute("style","display:none");
+
   const comment_id = event.target.getAttribute("comment-id");
-  const updatedText = window.prompt("Please enter updated comment:");
+  const saveButton = event.target.nextElementSibling.children[3];
 
-  if (updatedText && comment_id) {
-    const updateComment = await fetch(`/api/comments/${comment_id}`, {
-      method: 'PUT',
-      body: JSON.stringify({ updatedText }),
-      headers: { 'Content-Type': 'application/json' },
-    });
 
-    if (updateComment.ok) {
-      // If successful, reload page with updated comment
-      window.location.reload();
-    } else {
-      window.alert('Failed to update comment');
+  async function saveComment(e) {
+
+    e.preventDefault();
+
+    const updatedText = event.target.nextElementSibling.children[1].value;
+
+    // if textarea is left blank by mistake
+    if (updatedText.length === 0) {
+      window.alert("Please enter updated comment!");
+      return;
     };
-  };
+
+    // PUT request to the server to update user comment
+    if (updatedText && comment_id) {
+      const updateComment = await fetch(`/api/comments/${comment_id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ updatedText }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+  
+      if (updateComment.ok) {
+        // If successful, reload page with updated comment
+        window.location.reload();
+      } else {
+        window.alert('Failed to update comment');
+      };
+    };
+  } 
+
+  // event listener for update comment button
+  saveButton.addEventListener("click",saveComment);
+
 };
 
-// determine if the user clicked the edit or delete button (and then redirect them to the corresponding function)
-const handleEditOrDelete = async (event) => {
-  if (event.target.getAttribute("id") === "editButton") {
-    editButtonHandler(event);
-  };
+// handles cancelled comment edit
+function cancelUpdate() {
+
+  window.location.reload();
+
+}
+
+
+// handles comment deletion
+const handleDelete = async (event) => {
 
   if (event.target.getAttribute("id") === "deleteButton") {
     deleteButtonHandler(event);
   };
+
 };
 
 // event listener for when user clicks the submit form button
 submitButton.addEventListener("click", submitButtonHandler);
 
-// event listener for when user clicks the edit or the delete buttons
-document.querySelector('.previousComments').addEventListener('click', handleEditOrDelete);
+// adds event listener to each editable comment
+for (editButton of editButtons) {
+  editButton.addEventListener("click",editButtonHandler);
+};
+
+for (cancelButton of cancelButtons) {
+  cancelButton.addEventListener("click",cancelUpdate);
+};
+
+// event listener for when user clicks delete comment buttons
+document.querySelector('.previousComments').addEventListener('click', handleDelete);
