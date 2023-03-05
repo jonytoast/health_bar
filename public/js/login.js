@@ -48,6 +48,13 @@ const signupFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
+    // if user info already exists in database
+    if (response.status === 409) {
+      window.alert("Username and/or user email already exists!");
+      window.location.reload();
+      return;
+    };
+
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {

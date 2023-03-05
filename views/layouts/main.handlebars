@@ -20,10 +20,11 @@
     <nav>
       <!-- Conditionally render login or logout links -->
       <a href="/dashboard">Dashboard</a> |
-      <a href="/recipes">Recipes</a> |
       {{#if logged_in}}
-      <a class="no-button" id="logout">Logout</a>
+      <a href="/recipes">Recipes</a> |
+      <a class="no-button" id="logout">Logout</a> 
       {{else}}
+      <a href="/login">Recipes</a> |
       <a href="/login">Login</a>
       {{/if}}
     </nav>
