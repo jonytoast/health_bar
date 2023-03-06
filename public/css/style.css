@@ -41,16 +41,16 @@ a:hover {
 }
 
 #top {
-    font-family:'Ropa Sans', sans-serif;
+    font-family: 'Ropa Sans', sans-serif;
     position: fixed;
     bottom: 25px;
     left: 3px;
     background-color: var(--grapes);
-    color:white;
+    color: white;
     border-radius: 10px;
     width: fit-content;
     padding: 3px;
-    box-shadow: 5px 5px rgba(0,0,0,0.5);
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 #top:hover {
@@ -59,7 +59,7 @@ a:hover {
 }
 
 #top:active {
-    color:white;
+    color: white;
     background-color: grey;
     box-shadow: none;
 }
@@ -75,9 +75,10 @@ body {
     transition-duration: 0.3s;
 }
 
-#header, #footer-wrapper {
-    color:white;
-    font-family:'Lilita One', cursive;
+#header,
+#footer-wrapper {
+    color: white;
+    font-family: 'Lilita One', cursive;
     font-size: 1.2rem;
     text-align: center;
     padding-block: 20px;
@@ -102,7 +103,7 @@ body {
 }
 
 #header a {
-    color:white;
+    color: white;
     font-size: larger;
 }
 
@@ -115,13 +116,15 @@ body {
     0% {
         color: black;
     }
+
     50% {
         color: var(--warning);
     }
+
     100% {
         color: black;
     }
-    
+
 }
 
 .greeting {
@@ -144,7 +147,7 @@ body {
 }
 
 .recipe-wrapper {
-    position:relative;
+    position: relative;
     text-align: center;
     margin-inline: 15px;
     padding-inline: 25px;
@@ -160,7 +163,7 @@ body {
     content: "RECIPE";
     position: absolute;
     top: -25px;
-    left:25px;
+    left: 25px;
     height: 25px;
     width: 120px;
     border-radius: 10px 10px 0 0;
@@ -173,7 +176,7 @@ body {
     content: "RECIPE";
     position: absolute;
     top: -25px;
-    right:25px;
+    right: 25px;
     height: 25px;
     width: 120px;
     border-radius: 10px 10px 0 0;
@@ -191,7 +194,7 @@ body {
 .recipe-title:hover {
     animation: none;
     color: var(--grapes);
-    text-shadow: 2px 2px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .recipe-title:active {
@@ -206,12 +209,12 @@ body {
 .recipe-wrapper:hover {
     background-color: white;
     border: 5px solid var(--custard);
-    box-shadow: 7px 7px rgba(0,0,0,0.5);
+    box-shadow: 7px 7px rgba(0, 0, 0, 0.5);
 }
 
 .homepage-title {
     text-align: center;
-    font-size:  27px;
+    font-size: 27px;
 }
 
 /* login page styling */
@@ -219,7 +222,8 @@ body {
     margin-top: 35px;
 }
 
-#login-wrapper, #signup-wrapper {
+#login-wrapper,
+#signup-wrapper {
     position: relative;
     font-family: 'Ropa Sans', sans-serif;
     line-height: 2rem;
@@ -240,7 +244,7 @@ body {
     content: "LOGIN";
     position: absolute;
     top: -35px;
-    left:25px;
+    left: 25px;
     height: 25px;
     width: 120px;
     border-radius: 10px 10px 0 0;
@@ -254,7 +258,7 @@ body {
     content: "SIGNUP";
     position: absolute;
     top: -35px;
-    left:25px;
+    left: 25px;
     height: 25px;
     width: 120px;
     border-radius: 10px 10px 0 0;
@@ -263,10 +267,11 @@ body {
     transition-duration: 0.3s;
 }
 
-#login-wrapper:hover, #signup-wrapper:hover {
+#login-wrapper:hover,
+#signup-wrapper:hover {
     border: 10px solid var(--custard);
     background-color: white;
-    box-shadow: 7px 7px rgba(0,0,0,0.5);
+    box-shadow: 7px 7px rgba(0, 0, 0, 0.5);
 }
 
 #login-wrapper:hover::after {
@@ -280,7 +285,7 @@ body {
 .submit {
     font-family: 'Ropa Sans', sans-serif;
     cursor: pointer;
-    color:white;
+    color: white;
     background-color: var(--grapes);
     margin-top: 10px;
     margin-inline: 10px;
@@ -292,15 +297,16 @@ body {
 }
 
 .submit:hover {
-    box-shadow: 3px 3px rgba(0,0,0,0.5);
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
     color: black;
     background-color: white;
 }
+
 .submit:active {
-    transition:none;
+    transition: none;
     border: 2px solid var(--plum);
     box-shadow: none;
-    color:white;
+    color: white;
     background-color: grey;
 }
 
@@ -314,12 +320,13 @@ body {
 }
 
 .author {
-    font-family: 'Ropa Sans', sans-serif;;
+    font-family: 'Ropa Sans', sans-serif;
+    ;
 }
 
 /* single recipe page styling */
 .single-recipe-wrapper {
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
 }
@@ -332,8 +339,8 @@ body {
 #recipe-text {
     overflow-y: scroll;
     font-size: 1.2rem;
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
     padding-inline: 25px;
     padding-block: 45px;
     background-color: var(--custard);
@@ -346,7 +353,7 @@ body {
 #recipe-text:hover {
     background-color: white;
     border: 7px solid var(--grapes);
-    box-shadow: 9px 9px rgba(0,0,0,0.5);
+    box-shadow: 9px 9px rgba(0, 0, 0, 0.5);
 }
 
 #comment-post-wrapper {
@@ -356,10 +363,10 @@ body {
 
 #commentText {
     font-family: 'Ropa Sans', sans-serif;
-    display:block;
-    margin-inline:auto;
+    display: block;
+    margin-inline: auto;
     width: 40vw;
-    resize:vertical;
+    resize: vertical;
 }
 
 #comments-wrapper {
@@ -382,7 +389,7 @@ body {
 .previous-comment:hover {
     background-color: white;
     border: 5px solid var(--paste);
-    box-shadow: 6px 6px rgba(0,0,0,0.5);
+    box-shadow: 6px 6px rgba(0, 0, 0, 0.5);
 }
 
 /* dashboard styling */
@@ -390,6 +397,7 @@ body {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -399,9 +407,11 @@ body {
     0% {
         opacity: 100%;
     }
+
     50% {
         opacity: 30%;
     }
+
     100% {
         opacity: 100%;
     }
@@ -412,9 +422,9 @@ body {
     z-index: 100;
     top: 150px;
     left: 7.5vw;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.8);
     width: 85vw;
-    height:35vh;
+    height: 35vh;
     border-radius: 25px;
     font-size: 1.5rem;
     padding-top: 50px;
@@ -423,7 +433,7 @@ body {
 
 #emoji {
     font-size: 5rem;
-    animation: spin 1s infinite ;
+    animation: spin 1s infinite;
     animation-timing-function: linear;
 }
 
@@ -442,15 +452,18 @@ body {
 #main-ingridient {
     width: 30vw;
     height: 1rem;
-    resize:none;
+    resize: none;
 }
 
 .previous-titles {
-    font-family: 'Gloria Hallelujah', cursive;;
+    font-family: 'Gloria Hallelujah', cursive;
+    ;
     margin-bottom: 0;
 }
 
-#search-bar-wrapper, #post-recipe-wrapper, #previous-recipe-wrapper {
+#search-bar-wrapper,
+#post-recipe-wrapper,
+#previous-recipe-wrapper {
     position: relative;
     font-family: 'Ropa Sans', sans-serif;
     text-align: center;
@@ -458,7 +471,7 @@ body {
     padding-block: 25px;
     padding-inline: 5px;
     width: 80vw;
-    margin-inline:auto;
+    margin-inline: auto;
     border-radius: 25px;
     border: 10px solid var(--periwinkle);
     transition-property: all;
@@ -471,7 +484,7 @@ body {
     content: "FOOD CHECKER";
     position: absolute;
     top: -35px;
-    left:25px;
+    left: 25px;
     height: 25px;
     width: 140px;
     border-radius: 10px 10px 0 0;
@@ -480,14 +493,14 @@ body {
     transition-duration: 0.3s;
 }
 
-#search-bar-wrapper:hover::after{
+#search-bar-wrapper:hover::after {
     background-color: var(--pink);
 }
 
 #search-bar-wrapper:hover {
     background-color: white;
     border: 10px solid var(--pink);
-    box-shadow: 7px 7px rgba(0,0,0,0.5);
+    box-shadow: 7px 7px rgba(0, 0, 0, 0.5);
 }
 
 #post-recipe-wrapper::after {
@@ -495,7 +508,7 @@ body {
     content: "NEW RECIPE";
     position: absolute;
     top: -35px;
-    left:25px;
+    left: 25px;
     height: 25px;
     width: 140px;
     border-radius: 10px 10px 0 0;
@@ -511,7 +524,7 @@ body {
 #post-recipe-wrapper:hover {
     background-color: white;
     border: 10px solid var(--leaves);
-    box-shadow: 7px 7px rgba(0,0,0,0.5);
+    box-shadow: 7px 7px rgba(0, 0, 0, 0.5);
 }
 
 #previous-recipe-wrapper::after {
@@ -519,7 +532,7 @@ body {
     content: "YOUR RECIPES";
     position: absolute;
     top: -35px;
-    left:25px;
+    left: 25px;
     height: 25px;
     width: 140px;
     border-radius: 10px 10px 0 0;
@@ -531,7 +544,7 @@ body {
 #previous-recipe-wrapper:hover {
     background-color: white;
     border: 10px solid var(--salmon);
-    box-shadow: 7px 7px rgba(0,0,0,0.5);
+    box-shadow: 7px 7px rgba(0, 0, 0, 0.5);
 }
 
 #previous-recipe-wrapper:hover::after {
@@ -543,10 +556,10 @@ body {
     height: 35vh;
     margin-inline: 5px;
     border-radius: 15px;
-    border:1px solid black;
-    padding-top:5px;
+    border: 1px solid black;
+    padding-top: 5px;
     margin-block: 15px;
-    resize:vertical;
+    resize: vertical;
 }
 
 .buttons {
@@ -558,7 +571,7 @@ body {
 .user-recipe {
     background-color: var(--pink);
     padding-block: 5px;
-    margin-block:10px;
+    margin-block: 10px;
     border-radius: 15px;
     margin-inline: 30px;
     transition-property: all;
@@ -567,7 +580,7 @@ body {
 
 .user-recipe:hover {
     background-color: var(--water);
-    box-shadow: 5px 5px rgba(0,0,0,0.5);
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 .update-text {
@@ -575,14 +588,14 @@ body {
     height: 40vh;
     border-radius: 15px;
     padding: 10px;
-    resize:vertical;
+    resize: vertical;
     transition-property: all;
     transition-duration: 0.3s;
 }
 
 .update-text:hover {
     border: 3px solid var(--leaves);
-    box-shadow: 3px 3px rgba(0,0,0,0.5);
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.5);
 }
 
 .edit-recipe-wrapper {
@@ -602,7 +615,7 @@ body {
     background-color: white;
     border-radius: 15px;
     text-align: center;
-    margin-top:35px;
+    margin-top: 35px;
     margin-bottom: 25vh;
     margin-inline: auto;
     padding-inline: 15px;
@@ -623,9 +636,11 @@ body {
     0% {
         background-color: rgb(210, 248, 138);
     }
+
     50% {
         background-color: var(--warning);
     }
+
     100% {
         background-color: rgb(210, 248, 138);
     }
@@ -633,13 +648,13 @@ body {
 
 #vegan {
     font-size: 1.2rem;
-    width:fit-content;
+    width: fit-content;
     padding-inline: 10px;
-    padding-block:5px;
-    margin-inline:auto;
+    padding-block: 5px;
+    margin-inline: auto;
     background-color: rgb(210, 248, 138);
     border-radius: 10px;
-    border:5px solid var(--custard);
+    border: 5px solid var(--custard);
     animation-name: warning;
     animation-duration: 2s;
     animation-iteration-count: infinite;
@@ -659,7 +674,7 @@ body {
 #nutrition-fact-box:hover {
     background-color: white;
     border: 5px solid var(--grapes);
-    box-shadow: 7px 7px rgba(0,0,0,0.5);
+    box-shadow: 7px 7px rgba(0, 0, 0, 0.5);
 }
 
 #related-recipes-title {
@@ -670,14 +685,15 @@ body {
 #new-search {
     text-align: center;
     display: block;
-    width:fit-content;
-    margin-inline:auto;
+    width: fit-content;
+    margin-inline: auto;
 }
 
 /* media queries for smaller viewports */
 @media screen and (max-width: 640px) {
 
-    #header, #footer-wrapper {
+    #header,
+    #footer-wrapper {
         font-size: 0.8rem;
     }
 
@@ -688,7 +704,7 @@ body {
     .listOfRecipes {
         font-size: 0.8rem;
     }
-    
+
     #recipe-title {
         font-size: 1.5rem;
     }
@@ -704,7 +720,7 @@ body {
     .author {
         font-size: 0.8rem;
     }
-    
+
     #recipe-text {
         font-size: 0.9rem;
         width: 60vw;
@@ -713,7 +729,7 @@ body {
     .homepage-title {
         font-size: 1rem;
     }
-    
+
     .previous-comment {
         width: 85vw;
     }
@@ -728,11 +744,11 @@ body {
     }
 
     .update-text {
-        width: 55vw; 
+        width: 55vw;
     }
 
     .user-recipe {
         margin-inline: 10px;
     }
-    
+
 }

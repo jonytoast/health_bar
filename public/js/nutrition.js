@@ -1,9 +1,9 @@
-// selects the text input of user's food query
+// Selects the text input of user's food query
 const query = document.getElementById('food-query');
 const search = document.getElementById('search');
 const loadingScreen = document.getElementById('loading');
 
-// async function that handles user food nutrition queries and display related recipes if user is logged in
+// Async function that handles user food nutrition queries and display related recipes if user is logged in
 async function handleFoodQuery() {
 
     const foodName = query.value.trim().toLowerCase();
@@ -12,12 +12,12 @@ async function handleFoodQuery() {
         window.alert("Please enter an ingredient!");
         return;
     } else {
-        loadingScreen.removeAttribute('style',"display:none");
+        loadingScreen.removeAttribute('style', "display:none");
     }
 
-    const response = await fetch(`/api/nutrition/${foodName}`,{
+    const response = await fetch(`/api/nutrition/${foodName}`, {
         method: 'GET',
-        headers: { 'Content-Type':'application/json' }
+        headers: { 'Content-Type': 'application/json' }
     });
 
     if (response.ok) {
@@ -31,4 +31,4 @@ async function handleFoodQuery() {
 };
 
 
-search.addEventListener("click",handleFoodQuery);
+search.addEventListener("click", handleFoodQuery);

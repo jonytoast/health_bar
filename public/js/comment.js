@@ -1,10 +1,10 @@
-// selects required html elements for event handlers
+// Selects required html elements for event handlers
 const projectComment = document.getElementById("commentText");
 const submitButton = document.getElementById("postButton");
 const editButtons = document.getElementsByClassName('edit');
 const cancelButtons = document.getElementsByClassName("cancel")
 
-//submitting new comment
+// Submitting new comment
 const submitButtonHandler = async (event) => {
   event.preventDefault();
   const body = projectComment.value;
@@ -30,7 +30,7 @@ const submitButtonHandler = async (event) => {
   };
 };
 
-//deleting a comment
+// Deleting a comment
 const deleteButtonHandler = async (event) => {
   const comment_id = event.target.getAttribute("comment-id");
 
@@ -49,14 +49,14 @@ const deleteButtonHandler = async (event) => {
   };
 };
 
-//updating a comment
+// Updating a comment
 const editButtonHandler = async (event) => {
 
   event.preventDefault();
 
-  // displays edit comment section and hide edit comment button
-  event.target.nextSibling.nextElementSibling.removeAttribute("style","display:none");
-  event.target.setAttribute("style","display:none");
+  // Displays edit comment section and hide edit comment button
+  event.target.nextSibling.nextElementSibling.removeAttribute("style", "display:none");
+  event.target.setAttribute("style", "display:none");
 
   const comment_id = event.target.getAttribute("comment-id");
   const saveButton = event.target.nextElementSibling.children[3];
@@ -68,7 +68,7 @@ const editButtonHandler = async (event) => {
 
     const updatedText = event.target.nextElementSibling.children[1].value;
 
-    // if textarea is left blank by mistake
+    // If textarea is left blank by mistake
     if (updatedText.length === 0) {
       window.alert("Please enter updated comment!");
       return;
@@ -81,7 +81,7 @@ const editButtonHandler = async (event) => {
         body: JSON.stringify({ updatedText }),
         headers: { 'Content-Type': 'application/json' },
       });
-  
+
       if (updateComment.ok) {
         // If successful, reload page with updated comment
         window.location.reload();
@@ -89,14 +89,14 @@ const editButtonHandler = async (event) => {
         window.alert('Failed to update comment');
       };
     };
-  } 
+  }
 
-  // event listener for update comment button
-  saveButton.addEventListener("click",saveComment);
+  // Event listener for update comment button
+  saveButton.addEventListener("click", saveComment);
 
 };
 
-// handles cancelled comment edit
+// Handles cancelled comment edit
 function cancelUpdate() {
 
   window.location.reload();
@@ -104,7 +104,7 @@ function cancelUpdate() {
 }
 
 
-// handles comment deletion
+// Handles comment deletion
 const handleDelete = async (event) => {
 
   if (event.target.getAttribute("id") === "deleteButton") {
@@ -113,17 +113,17 @@ const handleDelete = async (event) => {
 
 };
 
-// event listener for when user clicks the submit form button
+// Event listener for when user clicks the submit form button
 submitButton.addEventListener("click", submitButtonHandler);
 
-// adds event listener to each editable comment
+// Adds event listener to each editable comment
 for (editButton of editButtons) {
-  editButton.addEventListener("click",editButtonHandler);
+  editButton.addEventListener("click", editButtonHandler);
 };
 
 for (cancelButton of cancelButtons) {
-  cancelButton.addEventListener("click",cancelUpdate);
+  cancelButton.addEventListener("click", cancelUpdate);
 };
 
-// event listener for when user clicks delete comment buttons
+// Event listener for when user clicks delete comment buttons
 document.querySelector('.previousComments').addEventListener('click', handleDelete);

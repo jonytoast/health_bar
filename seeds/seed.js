@@ -1,14 +1,14 @@
 require('dotenv').config();
 const sequelize = require('../config/connection');
-// imports sequelize Models
+// Imports sequelize Models
 const { User, Recipe, Comment } = require('../models');
 
-// imports required json modules for data seeding
+// Imports required json modules for data seeding
 const userData = require('./userSeedData.json');
 const recipeData = require('./recipeSeedData.json');
 const commentData = require('./commentSeedData.json');
 
-// async function to seed database
+// Async function to seed database
 const seedDatabase = async () => {
 
   await sequelize.sync({ force: true });
@@ -29,5 +29,5 @@ const seedDatabase = async () => {
   process.exit(0);
 };
 
-// calls the function to seed database
+// Calls the function to seed database
 seedDatabase();

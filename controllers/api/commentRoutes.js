@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Comment, User, Recipe } = require('../../models');
+const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Post a comment (use withAuth middleware to authenticate access)

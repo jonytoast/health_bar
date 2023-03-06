@@ -1,71 +1,62 @@
 {{#if noResult}}
-  <div id="no-data-wrapper">
-    <h2>Womp Womp!</h2>
-    <h3>Data Not Found. Please Try Again!</h3>
-    <a class="submit" href="/dashboard">Go Back</a>
-  </div>
+<div id="no-data-wrapper">
+  <h2>Womp Womp!</h2>
+  <h3>Data Not Found. Please Try Again!</h3>
+  <a class="submit" href="/dashboard">Go Back</a>
+</div>
 {{else}}
-  <div id="nutrition-wrapper">
-    <h3 id="food-title">{{result.foodName}}</h3>
-    {{#if result.isVegan}}
-    <h5 id="vegan">{{result.isVegan}}</h5>
-    {{/if}}
+<div id="nutrition-wrapper">
+  <h3 id="food-title">{{result.foodName}}</h3>
+  {{#if result.isVegan}}
+  <h5 id="vegan">{{result.isVegan}}</h5>
+  {{/if}}
 
-      {{#if result.nutrients.length}}
-        <div id="nutrition-fact-box">
-          <h3>Serving Size: {{result.servingSize}} {{result.unit}}</h3>
-          <h3>Nutritional Facts:</h3>
-        {{#each result.nutrients as |nutrient|}}
+  {{#if result.nutrients.length}}
+  <div id="nutrition-fact-box">
+    <h3>Serving Size: {{result.servingSize}} {{result.unit}}</h3>
+    <h3>Nutritional Facts:</h3>
+    {{#each result.nutrients as |nutrient|}}
 
-            <p>{{nutrient.nutrientName}}: {{nutrient.value}} {{nutrient.unitName}}</p>
+    <p>{{nutrient.nutrientName}}: {{nutrient.value}} {{nutrient.unitName}}</p>
 
-        {{/each}}
-        </div>
-      {{else}}
-        <div id="nutrition-fact-box">
-          <p>Oops! Nutritional Fact Data Not Found!</p>
-          <p>Tip: Try to Refine your Search</p>
-        </div>
-      {{/if}}
-
+    {{/each}}
   </div>
+  {{else}}
+  <div id="nutrition-fact-box">
+    <p>Oops! Nutritional Fact Data Not Found!</p>
+    <p>Tip: Try to Refine your Search</p>
+  </div>
+  {{/if}}
+
+</div>
 {{/if}}
 
 {{#unless noResult}}
 
-  {{#if recipeData.length}}
+{{#if recipeData.length}}
 
-    <h3 id="related-recipes-title">Here are the recipes that include {{ query }}:</h3>
+<h3 id="related-recipes-title">Here are the recipes that include {{ query }}:</h3>
 
-    {{#each recipeData as |recipe| }}
-    <div class="recipe-wrapper">
-      <div class="col-md-5">
-        <h2>
-          <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-          {{{get_emoji}}}
-          <a class="recipe-title" href="/recipe/{{recipe.id}}">{{recipe.title}}</a>
-        </h2>
-      </div>
-      <div class="col-md-7">
-        <p>
-          {{recipe.recipe_text}}
-        </p>
-      </div>
-    </div>
-    {{/each}}
-    <hr class="hr">
-  {{else}}
-    <h3 id="related-recipes-title">Oops! No recipe that includes {{ query }} yet!</h3>
-    <hr class="hr">
-  {{/if}}
-  <a id="new-search" class="submit" href="/dashboard">New Search</a>
+{{#each recipeData as |recipe| }}
+<div class="recipe-wrapper">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      {{{get_emoji}}}
+      <a class="recipe-title" href="/recipe/{{recipe.id}}">{{recipe.title}}</a>
+    </h2>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{recipe.recipe_text}}
+    </p>
+  </div>
+</div>
+{{/each}}
+<hr class="hr">
+{{else}}
+<h3 id="related-recipes-title">Oops! No recipe that includes {{ query }} yet!</h3>
+<hr class="hr">
+{{/if}}
+<a id="new-search" class="submit" href="/dashboard">New Search</a>
 {{/unless}}
-
-
-
-
-
-
-
-
-

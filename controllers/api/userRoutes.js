@@ -7,24 +7,24 @@ router.post('/', async (req, res) => {
 
     // checks if user already exists in database
     const checkUsername = await User.findOne({
-      where:{
+      where: {
         username: req.body.username
       }
     });
 
     const checkEmail = await User.findOne({
-      where:{
+      where: {
         email: req.body.email
       }
     });
 
     // if sequelize finds duplicate record in database
     if (checkUsername !== null || checkEmail !== null) {
-      
-      res.status(409).json({message:"duplicate record"});
+
+      res.status(409).json({ message: "duplicate record" });
       return;
 
-    // if user's signup info is not in the database yet
+      // if user's signup info is not in the database yet
     } else {
 
       // sequelize creates new user data
@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
       req.session.save(() => {
         req.session.user_id = userData.id;
         req.session.logged_in = true;
-  
+
         res.status(200).json(userData);
       });
 
@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
 
 // Log a user in 
 router.post('/login', async (req, res) => {
-  try {    
+  try {
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     console.log(userData);
@@ -72,7 +72,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
+
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 

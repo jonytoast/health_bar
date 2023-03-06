@@ -4,14 +4,14 @@ require('dotenv').config();
 
 let sequelize;
 
-// when using JAWSDB for database hosting
+// When using JAWSDB for database hosting
 if (process.env.JAWSDB_URL) {
 
     sequelize = new Sequelize(process.env.JAWSDB_URL);
 
 } else {
 
-// using local environment variables 
+// Using local environment variables 
     sequelize = new Sequelize(
         process.env.DB_NAME,
         process.env.DB_USER,
@@ -24,5 +24,5 @@ if (process.env.JAWSDB_URL) {
     );
 }
 
-// exports sequelize connection
+// Exports sequelize connection
 module.exports = sequelize;

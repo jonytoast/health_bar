@@ -4,7 +4,7 @@ module.exports = {
     return date.toLocaleDateString();
   },
   format_amount: (amount) => {
-    // format large numbers with commas
+    // Format large numbers with commas
     return parseInt(amount).toLocaleString();
   },
   get_emoji: () => {
@@ -52,7 +52,7 @@ module.exports = {
     } else {
       return `<span for="img" aria-label="taco">🌮</span>`;
     }
-  
+
   },
   // Sees if the user is the owner of a comment (the one who commented it so that they can then edit/delete that comment)
   is_commenter: (comment_user_id, user_id) => {

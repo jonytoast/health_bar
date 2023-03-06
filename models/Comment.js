@@ -3,11 +3,10 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 // sets up Comment Model
-class Comment extends Model{};
+class Comment extends Model { };
 
 // initiates Comment Model
 Comment.init(
-
     {
         id: {
             type: DataTypes.INTEGER,
@@ -40,7 +39,8 @@ Comment.init(
         underscored: true,
         modelName: "comment",
         freezeTableName: true,
-});
+    }
+);
 
 // exports Comment Model
 module.exports = Comment;

@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Lilita+One&family=Ropa+Sans&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Lilita+One&family=Ropa+Sans&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
@@ -22,7 +24,7 @@
       <a href="/dashboard">Dashboard</a> |
       {{#if logged_in}}
       <a href="/recipes">Recipes</a> |
-      <a class="no-button" id="logout">Logout</a> 
+      <a class="no-button" id="logout">Logout</a>
       {{else}}
       <a href="/login">Recipes</a> |
       <a href="/login">Login</a>
@@ -31,20 +33,20 @@
   </header>
 
   <main>
-  {{{ body }}}
+    {{{ body }}}
 
-  <a id="top" href="#header">^<br>T<br>O<br>P</a>
+    <a id="top" href="#header">^<br>T<br>O<br>P</a>
   </main>
 
   <footer id="footer-wrapper">
     <p>Made with Love by Team Health Guru</p>
   </footer>
-  
-    <!-- Render script for logged in users only -->
+
+  <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
-  
+
 </body>
 
 </html>
