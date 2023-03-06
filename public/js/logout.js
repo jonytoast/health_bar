@@ -1,4 +1,4 @@
-// user logging out
+// User logging out
 const logout = async () => {
     const response = await fetch('/api/users/logout', {
       method: 'POST',

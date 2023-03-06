@@ -28,7 +28,7 @@ const loginFormHandler = async (event) => {
   };
 };
 
-// user signing up
+// User signing up
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
@@ -48,7 +48,7 @@ const signupFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    // if user info already exists in database
+    // If user info already exists in database
     if (response.status === 409) {
       window.alert("Username and/or user email already exists!");
       window.location.reload();
