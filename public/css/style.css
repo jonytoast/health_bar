@@ -326,6 +326,7 @@ body {
 
 #recipe-title {
     font-size: 3rem;
+    text-align: center;
 }
 
 #recipe-text {
